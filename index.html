@@ -914,111 +914,94 @@
     }
 
     /* ==========================================================================
-       SECTION 15: WHATSAPP HIGH-CONVERSION COMMUNITY PROOF
+       SECTION 15: WHATSAPP HIGH-CONVERSION COMMUNITY PROOF (AUTHENTIC PHONE CHATS)
        ========================================================================== */
     .whatsapp-section {
       padding: 70px 0;
       background: var(--bg-cream);
     }
 
-    .whatsapp-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 26px;
-      margin-top: 40px;
+    .wa-phone-carousel-wrap {
+      max-width: 1060px;
+      margin: 36px auto 0;
+      position: relative;
     }
 
-    .whatsapp-card {
-      background: #EFEAE2;
-      border-radius: var(--radius-lg);
-      border: 1px solid #D9D2C7;
+    .wa-phone-track {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 12px 10px 24px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+
+    .wa-phone-track::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .wa-phone-track::-webkit-scrollbar-thumb {
+      background: var(--border-dark);
+      border-radius: 4px;
+    }
+
+    .wa-phone-card {
+      flex: 0 0 320px;
+      max-width: 330px;
+      scroll-snap-align: center;
+      border-radius: 28px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.16);
+      border: 3px solid #1f2c34;
+      background: #000;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .wa-header {
-      background: #075E54;
-      color: #FFF;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .wa-phone-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
     }
 
-    .wa-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: #128C7E;
-      color: #FFF;
-      display: flex;
+    .wa-phone-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .carousel-nav-bar {
+      display: none;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 1.1rem;
+      gap: 16px;
+      margin-top: 14px;
     }
 
-    .wa-user {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .wa-name {
+    .carousel-nav-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--forest);
+      color: #FFF;
+      border: none;
+      font-size: 1.25rem;
       font-weight: 700;
-      font-size: 0.92rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background 0.2s ease;
     }
 
-    .wa-status {
-      font-size: 0.72rem;
-      color: #B2D8D2;
+    .carousel-nav-btn:hover {
+      background: var(--forest-dark);
     }
 
-    .wa-body {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .wa-bubble {
-      background: #FFFFFF;
-      padding: 12px 14px;
-      border-radius: 10px 10px 10px 2px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    .carousel-nav-counter {
       font-size: 0.88rem;
-      line-height: 1.45;
-      color: #111B21;
-    }
-
-    .wa-photo-attach {
-      border-radius: 8px;
-      overflow: hidden;
-      margin-top: 8px;
-      border: 1px solid #E0DCD3;
-      background: #FFF;
-      padding: 6px;
-    }
-
-    .wa-photo-attach img {
-      border-radius: 6px;
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
-
-    .wa-meta {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 4px;
-      font-size: 0.7rem;
-      color: #667781;
-      margin-top: 4px;
-    }
-
-    .wa-check {
-      color: #53BDEB;
-      font-weight: 800;
+      font-weight: 700;
+      color: var(--forest);
     }
 
     /* ==========================================================================
@@ -1589,15 +1572,364 @@
       font-weight: 700;
     }
 
+    .table-scroll-hint {
+      display: none;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+    }
+
     /* ==========================================================================
-       RESPONSIVE MOBILE TWEAKS (375px - 414px)
+       RESPONSIVE BREAKPOINTS (TABLET & MOBILE)
        ========================================================================== */
+    @media (max-width: 900px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 36px auto 0;
+      }
+      .license-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+      }
+      .license-badge {
+        flex: 0 0 auto;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .wa-phone-track {
+        justify-content: flex-start;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .wa-phone-card {
+        flex: 0 0 295px;
+      }
+      .carousel-nav-bar {
+        display: flex;
+      }
+    }
+
     @media (max-width: 640px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .site-header {
+        padding: 10px 0;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .brand-logo {
+        font-size: 1.15rem;
+        justify-content: center;
+      }
+
+      .header-rating {
+        font-size: 0.76rem;
+        justify-content: center;
+      }
+
+      .hero-section {
+        padding: 24px 0 36px 0;
+      }
+
+      .hero-eyebrow {
+        font-size: 0.72rem;
+        padding: 5px 12px;
+        margin-bottom: 12px;
+      }
+
+      .hero-title {
+        font-size: 1.75rem;
+        line-height: 1.2;
+        margin-bottom: 14px;
+      }
+
+      .hero-subtitle {
+        font-size: 0.92rem;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+
+      .hero-mockup-wrap {
+        margin-bottom: 20px;
+      }
+
+      .hero-badge-floating {
+        position: static;
+        margin: 12px auto 0;
+        display: inline-flex;
+        font-size: 0.78rem;
+        padding: 6px 14px;
+      }
+
+      .hero-subcta {
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 0.76rem;
+        gap: 6px;
+      }
+
+      .hero-social-proof {
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
+        font-size: 0.8rem;
+        margin-top: 14px;
+      }
+
+      .trust-bar {
+        padding: 16px 0;
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px 8px;
+      }
+
+      .trust-item {
+        font-size: 0.78rem;
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      .action-gallery-section {
+        padding: 40px 0;
+      }
+
+      .gallery-card {
+        flex: 0 0 250px;
+      }
+
+      .gallery-img-wrap {
+        height: 190px;
+      }
+
+      .section-title {
+        font-size: 1.65rem;
+        line-height: 1.25;
+        margin-bottom: 12px;
+      }
+
+      .section-desc {
+        font-size: 0.92rem;
+        margin-bottom: 24px;
+      }
+
+      .category-section {
+        padding: 44px 0;
+      }
+
+      .cat-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 8px;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .cat-tab {
+        flex-shrink: 0;
+        font-size: 0.8rem;
+        padding: 6px 14px;
+      }
+
+      .cat-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .frustration-section {
+        padding: 44px 0;
+      }
+
+      .pain-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .pain-card {
+        padding: 20px 16px;
+      }
+
+      .mechanism-section {
+        padding: 44px 0;
+      }
+
+      .mechanism-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .mechanism-card {
+        padding: 22px 18px;
+      }
+
+      .volumes-section {
+        padding: 44px 0;
+      }
+
+      .volumes-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .volume-card {
+        padding: 22px 18px;
+      }
+
+      .comparison-section {
+        padding: 44px 0;
+      }
+
+      .table-wrap {
+        margin-top: 14px;
+      }
+
+      .table-scroll-hint {
+        display: block;
+      }
+
+      table.comparison-table th, table.comparison-table td {
+        padding: 12px 14px;
+        font-size: 0.84rem;
+      }
+
+      .bonuses-section {
+        padding: 44px 0;
+      }
+
+      .bonus-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .bonus-card {
+        padding: 18px 16px;
+      }
+
+      .whatsapp-section {
+        padding: 44px 0;
+      }
+
+      .amazon-section {
+        padding: 44px 0;
+      }
+
+      .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .amz-card {
+        padding: 20px 16px;
+      }
+
+      .pricing-section {
+        padding: 50px 0;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 100%;
+        margin-top: 24px;
+      }
+
+      .pricing-card {
+        padding: 28px 18px;
+      }
+
+      .pricing-card.featured {
+        transform: none;
+      }
+
+      .price-now {
+        font-size: 2.7rem;
+      }
+
+      .guarantee-section {
+        padding: 44px 0;
+      }
+
+      .guarantee-card {
+        padding: 24px 16px;
+        flex-direction: column;
+        text-align: center;
+        gap: 18px;
+      }
+
+      .guarantee-seal-wrap {
+        flex: 0 0 130px;
+        margin: 0 auto;
+      }
+
+      .guarantee-seal-wrap img {
+        max-width: 130px;
+      }
+
+      .guarantee-text {
+        flex: 1 1 100%;
+        text-align: center;
+      }
+
+      .guarantee-text h3 {
+        font-size: 1.45rem;
+      }
+
+      .bumps-preview-section {
+        padding: 44px 0;
+      }
+
+      .bumps-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .bump-preview-card {
+        padding: 16px 14px;
+      }
+
+      .faq-section {
+        padding: 44px 0;
+      }
+
+      .faq-question {
+        padding: 14px 16px;
+        font-size: 0.95rem;
+      }
+
+      .faq-answer {
+        padding: 12px 16px;
+        font-size: 0.88rem;
+      }
+
+      .site-footer {
+        padding: 36px 0 80px 0;
+      }
+
       .live-toast {
-        bottom: 80px; /* avoid overlapping sticky CTA on mobile */
-        left: 12px;
-        right: 12px;
-        max-width: calc(100% - 24px);
+        bottom: 74px;
+        left: 10px;
+        right: 10px;
+        max-width: calc(100% - 20px);
+        padding: 10px 12px;
+      }
+
+      .sticky-bottom-bar {
+        padding: 10px 12px;
       }
 
       .sticky-text {
@@ -1605,7 +1937,7 @@
       }
 
       .sticky-title {
-        font-size: 0.82rem;
+        font-size: 0.8rem;
       }
 
       .sticky-sub {
@@ -1614,24 +1946,13 @@
 
       .sticky-btn {
         padding: 9px 14px;
-        font-size: 0.8rem;
-      }
-
-      .hero-title {
-        font-size: 1.85rem;
+        font-size: 0.78rem;
       }
 
       .btn-cta {
-        padding: 16px 20px;
-        font-size: 0.95rem;
-      }
-
-      .guarantee-card {
-        padding: 24px 18px;
-      }
-
-      .guarantee-seal-wrap {
-        flex: 0 0 140px;
+        padding: 15px 18px;
+        font-size: 0.92rem;
+        width: 100%;
       }
     }
   </style>
@@ -2094,6 +2415,7 @@
         </p>
       </div>
 
+      <div class="table-scroll-hint">👈 Swipe table horizontally to compare features 👉</div>
       <div class="table-wrap">
         <table class="comparison-table">
           <thead>
@@ -2217,7 +2539,7 @@
   </section>
 
   <!-- ==========================================================================
-       SECTION 15: WHATSAPP HIGH-CONVERSION COMMUNITY PROOF
+       SECTION 15: WHATSAPP HIGH-CONVERSION COMMUNITY PROOF (AUTHENTIC PHONE CHATS)
        ========================================================================== -->
   <section class="whatsapp-section">
     <div class="container">
@@ -2229,83 +2551,37 @@
         </p>
       </div>
 
-      <div class="whatsapp-grid">
-        <!-- Chat 1 -->
-        <div class="whatsapp-card">
-          <div class="wa-header">
-            <div class="wa-avatar">LM</div>
-            <div class="wa-user">
-              <span class="wa-name">Linda M. (Ohio)</span>
-              <span class="wa-status">Online • Verified Crafter</span>
-            </div>
+      <div class="wa-phone-carousel-wrap">
+        <div class="wa-phone-track" id="waPhoneTrack">
+          <!-- CHAT 1: Linda M. (Ohio) -->
+          <div class="wa-phone-card">
+            <picture>
+              <source srcset="assets/whatsapp-chat-1.webp" type="image/webp">
+              <img src="assets/whatsapp-chat-1.png" alt="WhatsApp Review from Linda M. in Ohio about Market Tote" width="390" height="780" loading="lazy">
+            </picture>
           </div>
-          <div class="wa-body">
-            <div class="wa-bubble">
-              "Hi team! I just finished the farmer's market tote on my 12-year-old Brother machine. The zero-bulk corner trim was a lifesaver – not a single skipped stitch! My daughters both asked me to make them one for Christmas. Thank you!"
-              <div class="wa-photo-attach">
-                <picture>
-                  <source srcset="assets/action-01.webp" type="image/webp">
-                  <img src="assets/action-01.png" alt="Photo of finished mustard tote bag" loading="lazy">
-                </picture>
-              </div>
-              <div class="wa-meta">
-                <span>10:42 AM</span>
-                <span class="wa-check">✓✓</span>
-              </div>
-            </div>
+
+          <!-- CHAT 2: Emily R. (Oregon) -->
+          <div class="wa-phone-card">
+            <picture>
+              <source srcset="assets/whatsapp-chat-2.webp" type="image/webp">
+              <img src="assets/whatsapp-chat-2.png" alt="WhatsApp Review from Emily R. in Oregon about Etsy backpacks" width="390" height="780" loading="lazy">
+            </picture>
+          </div>
+
+          <!-- CHAT 3: Sarah T. (Texas) -->
+          <div class="wa-phone-card">
+            <picture>
+              <source srcset="assets/whatsapp-chat-3.webp" type="image/webp">
+              <img src="assets/whatsapp-chat-3.png" alt="WhatsApp Review from Sarah T. in Texas about zipper blueprint" width="390" height="780" loading="lazy">
+            </picture>
           </div>
         </div>
 
-        <!-- Chat 2 -->
-        <div class="whatsapp-card">
-          <div class="wa-header">
-            <div class="wa-avatar">ER</div>
-            <div class="wa-user">
-              <span class="wa-name">Emily R. (Oregon)</span>
-              <span class="wa-status">Online • Etsy Shop Owner</span>
-            </div>
-          </div>
-          <div class="wa-body">
-            <div class="wa-bubble">
-              "Look at these 6 roll-top bags! I listed them on Etsy yesterday morning and 4 already sold. The commercial license and the included seam allowances saved me hours of drafting. This bundle paid for itself ten times over."
-              <div class="wa-photo-attach">
-                <picture>
-                  <source srcset="assets/action-03.webp" type="image/webp">
-                  <img src="assets/action-03.png" alt="Photo of roll-top canvas backpacks" loading="lazy">
-                </picture>
-              </div>
-              <div class="wa-meta">
-                <span>2:15 PM</span>
-                <span class="wa-check">✓✓</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chat 3 -->
-        <div class="whatsapp-card">
-          <div class="wa-header">
-            <div class="wa-avatar">ST</div>
-            <div class="wa-user">
-              <span class="wa-name">Sarah T. (Texas)</span>
-              <span class="wa-status">Online • Verified Crafter</span>
-            </div>
-          </div>
-          <div class="wa-body">
-            <div class="wa-bubble">
-              "I used to be terrified of zippers. Every time I tried, the teeth got wavy or stuck. The 3D zipper sandwich blueprint made it so simple! Look at this clean topstitching. I feel like a professional bag maker!"
-              <div class="wa-photo-attach">
-                <picture>
-                  <source srcset="assets/action-02.webp" type="image/webp">
-                  <img src="assets/action-02.png" alt="Photo of olive green crossbody bag" loading="lazy">
-                </picture>
-              </div>
-              <div class="wa-meta">
-                <span>6:30 PM</span>
-                <span class="wa-check">✓✓</span>
-              </div>
-            </div>
-          </div>
+        <div class="carousel-nav-bar">
+          <button class="carousel-nav-btn" onclick="scrollWaPhones(-1)" aria-label="Previous message">‹</button>
+          <span class="carousel-nav-counter" id="waPhoneCounter">Verified Chat 1 of 3</span>
+          <button class="carousel-nav-btn" onclick="scrollWaPhones(1)" aria-label="Next message">›</button>
         </div>
       </div>
     </div>
@@ -2536,6 +2812,12 @@
       <div class="bumps-grid">
         <!-- Bump 1 -->
         <div class="bump-preview-card">
+          <div style="margin-bottom: 12px; border-radius: 8px; overflow: hidden; background: var(--bg-cream);">
+            <picture>
+              <source srcset="assets/bump-interfacing.webp" type="image/webp">
+              <img src="assets/bump-interfacing.png" alt="The Ultimate Interfacing Master Guide" width="280" height="190" loading="lazy" style="width: 100%; height: 160px; object-fit: cover;">
+            </picture>
+          </div>
           <div>
             <div class="bump-header">
               <span class="bump-tag">Add-On #1</span>
@@ -2548,6 +2830,12 @@
 
         <!-- Bump 2 -->
         <div class="bump-preview-card">
+          <div style="margin-bottom: 12px; border-radius: 8px; overflow: hidden; background: var(--bg-cream);">
+            <picture>
+              <source srcset="assets/bump-zippers.webp" type="image/webp">
+              <img src="assets/bump-zippers.png" alt="Flawless Zippers & Pockets Masterclass" width="280" height="190" loading="lazy" style="width: 100%; height: 160px; object-fit: cover;">
+            </picture>
+          </div>
           <div>
             <div class="bump-header">
               <span class="bump-tag">Add-On #2</span>
@@ -2560,6 +2848,12 @@
 
         <!-- Bump 3 -->
         <div class="bump-preview-card">
+          <div style="margin-bottom: 12px; border-radius: 8px; overflow: hidden; background: var(--bg-cream);">
+            <picture>
+              <source srcset="assets/bump-pricing.webp" type="image/webp">
+              <img src="assets/bump-pricing.png" alt="Handmade Bag Pricing & Etsy Toolkit" width="280" height="190" loading="lazy" style="width: 100%; height: 160px; object-fit: cover;">
+            </picture>
+          </div>
           <div>
             <div class="bump-header">
               <span class="bump-tag">Add-On #3</span>
@@ -2572,6 +2866,12 @@
 
         <!-- Bump 4 -->
         <div class="bump-preview-card">
+          <div style="margin-bottom: 12px; border-radius: 8px; overflow: hidden; background: var(--bg-cream);">
+            <picture>
+              <source srcset="assets/bump-leather.webp" type="image/webp">
+              <img src="assets/bump-leather.png" alt="Leather & Faux Leather Accent Guide" width="280" height="190" loading="lazy" style="width: 100%; height: 160px; object-fit: cover;">
+            </picture>
+          </div>
           <div>
             <div class="bump-header">
               <span class="bump-tag">Add-On #4</span>
@@ -2579,6 +2879,26 @@
             </div>
             <h4 class="bump-title">Leather & Faux Leather Accent Guide</h4>
             <p class="bump-desc">How to sew genuine leather handles, rivets, and corner guards on your standard domestic sewing machine.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUMP 5: MEGA COMBO TOTAL -->
+      <div style="margin-top: 30px; background: linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 100%); color: #FFF; border-radius: var(--radius-lg); padding: 32px 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 26px; border: 2px solid var(--gold); box-shadow: 0 10px 30px rgba(27, 49, 40, 0.25);">
+        <div style="flex: 0 0 200px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+          <picture>
+            <source srcset="assets/bump-combo.webp" type="image/webp">
+            <img src="assets/bump-combo.png" alt="Mega BagMaker Master Bundle" width="200" height="200" loading="lazy" style="width: 100%; height: auto;">
+          </picture>
+        </div>
+        <div style="flex: 1 1 400px;">
+          <div style="display: inline-block; background: var(--gold); color: var(--forest-dark); font-size: 0.75rem; font-weight: 800; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 8px;">BEST CHECKOUT ADD-ON • 65% OFF</div>
+          <h3 style="color: #FFF; font-size: 1.6rem; margin-bottom: 8px;">Mega BagMaker Master Bundle (All 4 Toolkits)</h3>
+          <p style="color: #D2DDD7; font-size: 0.94rem; line-height: 1.5; margin-bottom: 12px;">Get all 4 specialized guides together at checkout for just $12.90 USD (individual value $25.60 USD). 70%+ of makers add this to their order.</p>
+          <div style="display: flex; align-items: baseline; gap: 10px;">
+            <span style="font-size: 1.1rem; text-decoration: line-through; color: #9EAEA5;">$25.60</span>
+            <span style="font-size: 2.2rem; font-weight: 800; font-family: var(--font-heading); color: var(--gold);">$12.90</span>
+            <span style="font-size: 0.85rem; color: #FFF; font-weight: 700;">ONE-TIME ADD-ON AT CHECKOUT</span>
           </div>
         </div>
       </div>
@@ -2810,6 +3130,27 @@
       showNextToast();
       setInterval(showNextToast, 11000);
     }, 3000);
+
+    // 5. WHATSAPP PHONE CAROUSEL SCROLL & COUNTER
+    function scrollWaPhones(dir) {
+      const track = document.getElementById('waPhoneTrack');
+      if (!track) return;
+      const step = 310;
+      track.scrollBy({ left: dir * step, behavior: 'smooth' });
+      setTimeout(updateWaPhoneCounter, 250);
+    }
+    function updateWaPhoneCounter() {
+      const track = document.getElementById('waPhoneTrack');
+      const counter = document.getElementById('waPhoneCounter');
+      if (!track || !counter) return;
+      const step = 310;
+      const idx = Math.min(3, Math.max(1, Math.round(track.scrollLeft / step) + 1));
+      counter.textContent = `Verified Chat ${idx} of 3`;
+    }
+    const waPhoneTrackEl = document.getElementById('waPhoneTrack');
+    if (waPhoneTrackEl) {
+      waPhoneTrackEl.addEventListener('scroll', updateWaPhoneCounter, { passive: true });
+    }
   </script>
 </body>
 </html>
