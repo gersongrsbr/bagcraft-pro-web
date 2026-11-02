@@ -11,6 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Preload Hero Mockup for LCP (creador-de-paginas Rule 11) -->
+  <link rel="preload" as="image" href="assets/hero-mockup.webp" type="image/webp">
+
   <style>
     /* ==========================================================================
        CSS RESET & VARIABLES (Brandbook: Crafting Moderno / Terracotta & Forest)
@@ -880,6 +883,37 @@
       border-radius: var(--radius-md);
       padding: 24px;
       position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bonus-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .bonus-img-wrap {
+      margin: -24px -24px 18px -24px;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      overflow: hidden;
+      background: var(--bg-warm);
+      aspect-ratio: 4/3;
+      position: relative;
+    }
+
+    .bonus-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .bonus-card:hover .bonus-img-wrap img {
+      transform: scale(1.03);
     }
 
     .bonus-tag {
@@ -2655,6 +2689,12 @@
       <div class="bonus-grid">
         <!-- Bonus 1 -->
         <div class="bonus-card">
+          <div class="bonus-img-wrap">
+            <picture>
+              <source srcset="assets/bonus-01-fabric.webp" type="image/webp">
+              <img src="assets/bonus-01-fabric.png" alt="Fabric Pairing & Yardage Blueprint 3D Mockup" width="360" height="270" loading="lazy">
+            </picture>
+          </div>
           <span class="bonus-tag">Bonus #1</span>
           <h4>Complete Fabric & Yardage Cheat Sheet</h4>
           <div class="bonus-value">Valued at $19.00 • Free</div>
@@ -2665,6 +2705,12 @@
 
         <!-- Bonus 2 -->
         <div class="bonus-card">
+          <div class="bonus-img-wrap">
+            <picture>
+              <source srcset="assets/bonus-02-hardware.webp" type="image/webp">
+              <img src="assets/bonus-02-hardware.png" alt="Hardware & Straps Sourcing Directory 3D Mockup" width="360" height="270" loading="lazy">
+            </picture>
+          </div>
           <span class="bonus-tag">Bonus #2</span>
           <h4>Hardware & Straps Sourcing Directory</h4>
           <div class="bonus-value">Valued at $17.00 • Free</div>
@@ -2675,6 +2721,12 @@
 
         <!-- Bonus 3 -->
         <div class="bonus-card">
+          <div class="bonus-img-wrap">
+            <picture>
+              <source srcset="assets/bonus-03-license.webp" type="image/webp">
+              <img src="assets/bonus-03-license.png" alt="Handmade Commercial Seller's License 3D Certificate Mockup" width="360" height="270" loading="lazy">
+            </picture>
+          </div>
           <span class="bonus-tag">Bonus #3</span>
           <h4>Handmade Commercial Seller's License</h4>
           <div class="bonus-value">Valued at $47.00 • Free</div>
@@ -2685,6 +2737,12 @@
 
         <!-- Bonus 4 -->
         <div class="bonus-card">
+          <div class="bonus-img-wrap">
+            <picture>
+              <source srcset="assets/bonus-04-printing.webp" type="image/webp">
+              <img src="assets/bonus-04-printing.png" alt="Print-At-Home Scaling & Calibration Guide 3D Mockup" width="360" height="270" loading="lazy">
+            </picture>
+          </div>
           <span class="bonus-tag">Bonus #4</span>
           <h4>Print-At-Home Scaling & Calibration Guide</h4>
           <div class="bonus-value">Valued at $15.00 • Free</div>
@@ -2695,6 +2753,12 @@
 
         <!-- Bonus 5 -->
         <div class="bonus-card">
+          <div class="bonus-img-wrap">
+            <picture>
+              <source srcset="assets/bonus-05-lifetime.webp" type="image/webp">
+              <img src="assets/bonus-05-lifetime.png" alt="Lifetime Access & Future Updates VIP Pass 3D Mockup" width="360" height="270" loading="lazy">
+            </picture>
+          </div>
           <span class="bonus-tag">Bonus #5</span>
           <h4>Lifetime Access & Future Updates</h4>
           <div class="bonus-value">Valued at $29.00 • Free</div>
@@ -2889,7 +2953,7 @@
           </ul>
 
           <div class="checkout-btn">
-            <a href="https://pay.hotmart.com/B98234821X?off=basic&checkoutMode=10" target="_self" class="btn-cta" style="background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.35); color: #FFF; max-width: 100%; font-size: 0.95rem;">
+            <a href="https://pay.hotmart.com/B98234821X?off=basic&checkoutMode=10" target="_self" data-utmify-checkout="true" class="btn-cta" style="background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.35); color: #FFF; max-width: 100%; font-size: 0.95rem;">
               GET STARTER PACK FOR $14.90 →
             </a>
           </div>
@@ -2929,7 +2993,7 @@
           </ul>
 
           <div class="checkout-btn">
-            <a href="https://pay.hotmart.com/B98234821X?off=premium&checkoutMode=10" target="_self" class="btn-cta" style="background: linear-gradient(135deg, #16A34A 0%, #15803D 100%); color: #FFF; max-width: 100%; font-size: 1.15rem; font-weight: 900; box-shadow: 0 8px 24px rgba(22, 163, 74, 0.45);">
+            <a href="https://pay.hotmart.com/B98234821X?off=premium&checkoutMode=10" target="_self" data-utmify-checkout="true" class="btn-cta" style="background: linear-gradient(135deg, #16A34A 0%, #15803D 100%); color: #FFF; max-width: 100%; font-size: 1.15rem; font-weight: 900; box-shadow: 0 8px 24px rgba(22, 163, 74, 0.45);">
               GET MASTER COLLECTION FOR JUST $27 →
             </a>
           </div>
@@ -3319,6 +3383,46 @@
     if (waPhoneTrackEl) {
       waPhoneTrackEl.addEventListener('scroll', updateWaPhoneCounter, { passive: true });
     }
+
+    // 6. CANONICAL UTM & HOTMART TRACKING PROPAGATION (creador-de-paginas Rule 11)
+    (function() {
+      function getQueryParams() {
+        var params = {};
+        var search = window.location.search.substring(1);
+        if (!search) return params;
+        var pairs = search.split('&');
+        for (var i = 0; i < pairs.length; i++) {
+          var pair = pairs[i].split('=');
+          if (pair[0]) params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+        }
+        return params;
+      }
+      function propagateTracking() {
+        var params = getQueryParams();
+        var keys = Object.keys(params);
+        if (keys.length === 0) return;
+        var buttons = document.querySelectorAll('a[data-utmify-checkout="true"], a[href*="hotmart.com"]');
+        buttons.forEach(function(btn) {
+          try {
+            var url = new URL(btn.href, window.location.origin);
+            keys.forEach(function(k) { url.searchParams.set(k, params[k]); });
+            if (!url.searchParams.get('xcod') && params['utm_content']) url.searchParams.set('xcod', params['utm_content']);
+            if (!url.searchParams.get('sck') && params['utm_campaign']) url.searchParams.set('sck', params['utm_campaign']);
+            btn.href = url.toString();
+          } catch (e) {}
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', propagateTracking);
+      } else {
+        propagateTracking();
+      }
+      window.addEventListener('load', propagateTracking);
+      document.addEventListener('click', function(e) {
+        var btn = e.target.closest('a[data-utmify-checkout="true"], a[href*="hotmart.com"]');
+        if (btn) propagateTracking();
+      });
+    })();
   </script>
 </body>
 </html>
