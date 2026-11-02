@@ -951,17 +951,17 @@
       flex: 0 0 320px;
       max-width: 330px;
       scroll-snap-align: center;
-      border-radius: 28px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.16);
-      border: 3px solid #1f2c34;
-      background: #000;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: #FFFFFF;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .wa-phone-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.12);
     }
 
     .wa-phone-card img {
@@ -1080,51 +1080,155 @@
        SECTION 18: PRICING SECTION (DUAL PLAN BOX) - ID: #oferta
        ========================================================================== */
     .pricing-section {
-      padding: 80px 0;
-      background: radial-gradient(circle at 50% 10%, rgba(45, 74, 62, 0.08) 0%, transparent 60%);
-      border-top: 1px solid var(--border-subtle);
+      padding: 90px 0 100px 0;
+      background: radial-gradient(circle at 50% 15%, rgba(65, 138, 98, 0.28) 0%, transparent 60%), linear-gradient(180deg, #183627 0%, #0F2318 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      position: relative;
+    }
+
+    .pricing-section .section-eyebrow {
+      background: rgba(255, 200, 61, 0.18);
+      color: #FFC83D;
+      border: 1px solid rgba(255, 200, 61, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .pricing-section .section-title {
+      color: #FFFFFF;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+    }
+
+    .pricing-section .section-desc {
+      color: #D6E8DF;
+      max-width: 680px;
+      margin: 14px auto 0 auto;
     }
 
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      max-width: 900px;
-      margin: 40px auto 0 auto;
+      gap: 32px;
+      max-width: 920px;
+      margin: 44px auto 0 auto;
       align-items: stretch;
     }
 
     .pricing-card {
-      background: var(--bg-card);
       border-radius: var(--radius-lg);
-      border: 1px solid var(--border-subtle);
-      padding: 36px 28px;
+      padding: 38px 28px;
       display: flex;
       flex-direction: column;
       position: relative;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
+    /* Basic plan: Frosted Glass Dark Emerald */
+    .pricing-card:not(.featured) {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(12px);
+    }
+
+    .pricing-card:not(.featured) .plan-name {
+      color: #FFFFFF;
+    }
+
+    .pricing-card:not(.featured) .plan-desc {
+      color: #C2D6CC;
+    }
+
+    .pricing-card:not(.featured) .price-curr,
+    .pricing-card:not(.featured) .price-now {
+      color: #FFFFFF;
+    }
+
+    .pricing-card:not(.featured) .price-tagline {
+      color: #9FE3BC;
+    }
+
+    .pricing-card:not(.featured) .plan-features li {
+      color: #E2ECE6;
+    }
+
+    .pricing-card:not(.featured) .plan-features li::before {
+      color: #4ADE80;
+    }
+
+    .pricing-card:not(.featured) .plan-features li.disabled {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .pricing-card:not(.featured) .plan-features li.disabled::before {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Featured plan: Pure White Luxury with Glowing Gold & Emerald Accent */
     .pricing-card.featured {
-      border: 2px solid var(--terracotta);
-      box-shadow: 0 12px 36px rgba(194, 94, 62, 0.18);
-      transform: translateY(-8px);
+      background: #FFFFFF;
+      border: 3px solid #FFC83D;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 200, 61, 0.3);
+      transform: translateY(-10px);
+    }
+
+    .pricing-card.featured .plan-name {
+      color: #183627;
+      font-size: 1.65rem;
+    }
+
+    .pricing-card.featured .plan-desc {
+      color: #4A5568;
+    }
+
+    .pricing-card.featured .price-old {
+      color: #94A3B8;
+    }
+
+    .pricing-card.featured .price-curr {
+      color: #16A34A;
+    }
+
+    .pricing-card.featured .price-now {
+      color: #16A34A;
+      font-size: 3.4rem;
+    }
+
+    .pricing-card.featured .price-tagline {
+      background: #FEF3C7;
+      color: #B45309;
+      padding: 5px 14px;
+      border-radius: 6px;
+      font-weight: 800;
+      display: inline-block;
+    }
+
+    .pricing-card.featured .plan-features li {
+      color: #1E293B;
+    }
+
+    .pricing-card.featured .plan-features li strong {
+      color: #0F172A;
+    }
+
+    .pricing-card.featured .plan-features li::before {
+      color: #16A34A;
     }
 
     .pricing-ribbon {
       position: absolute;
-      top: -14px;
+      top: -15px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--terracotta);
-      color: #FFF;
-      font-size: 0.78rem;
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: #FFFFFF;
+      font-size: 0.8rem;
       font-weight: 800;
-      padding: 4px 18px;
+      padding: 6px 20px;
       border-radius: var(--radius-full);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.45);
     }
 
     .pricing-header {
@@ -1135,7 +1239,6 @@
     .plan-name {
       font-size: 1.5rem;
       font-family: var(--font-heading);
-      color: var(--forest);
       margin-bottom: 6px;
     }
 
@@ -1163,19 +1266,16 @@
       font-size: 3.2rem;
       font-weight: 800;
       font-family: var(--font-heading);
-      color: var(--forest);
       line-height: 1;
     }
 
     .price-curr {
       font-size: 1.25rem;
       font-weight: 700;
-      color: var(--forest);
     }
 
     .price-tagline {
       font-size: 0.82rem;
-      color: var(--cta-green);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -1191,7 +1291,6 @@
       position: relative;
       padding-left: 26px;
       font-size: 0.92rem;
-      color: var(--text-dark);
       margin-bottom: 12px;
       line-height: 1.45;
     }
@@ -1200,18 +1299,15 @@
       content: "✔";
       position: absolute;
       left: 0;
-      color: var(--cta-green);
       font-weight: 800;
     }
 
     .plan-features li.disabled {
-      color: #A0AEC0;
       text-decoration: line-through;
     }
 
     .plan-features li.disabled::before {
       content: "✕";
-      color: #CBD5E1;
     }
 
     .checkout-btn {
@@ -2793,7 +2889,7 @@
           </ul>
 
           <div class="checkout-btn">
-            <a href="https://pay.hotmart.com/B98234821X?off=basic&checkoutMode=10" target="_self" class="btn-cta" style="background: var(--forest); max-width: 100%; font-size: 0.95rem;">
+            <a href="https://pay.hotmart.com/B98234821X?off=basic&checkoutMode=10" target="_self" class="btn-cta" style="background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.35); color: #FFF; max-width: 100%; font-size: 0.95rem;">
               GET STARTER PACK FOR $14.90 →
             </a>
           </div>
@@ -2806,7 +2902,7 @@
           <div class="pricing-header">
             <h3 class="plan-name">Master Collection</h3>
             <p class="plan-desc">The complete vault with lifetime updates</p>
-            <div style="margin: 14px auto; max-width: 260px; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,0.12);">
+            <div style="margin: 14px auto; max-width: 260px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.14);">
               <picture>
                 <source srcset="assets/mockup-premium.webp" type="image/webp">
                 <img src="assets/mockup-premium.png" alt="Master Collection Mockup +200 Patterns" width="260" height="260" loading="lazy">
@@ -2817,7 +2913,7 @@
               <span class="price-curr">$</span>
               <span class="price-now">27.00</span>
             </div>
-            <span class="price-tagline" style="color: var(--terracotta);">70% OFF SPECIAL RELEASE PRICING</span>
+            <span class="price-tagline">70% OFF SPECIAL RELEASE PRICING</span>
           </div>
 
           <ul class="plan-features">
@@ -2833,7 +2929,7 @@
           </ul>
 
           <div class="checkout-btn">
-            <a href="https://pay.hotmart.com/B98234821X?off=premium&checkoutMode=10" target="_self" class="btn-cta" style="max-width: 100%;">
+            <a href="https://pay.hotmart.com/B98234821X?off=premium&checkoutMode=10" target="_self" class="btn-cta" style="background: linear-gradient(135deg, #16A34A 0%, #15803D 100%); color: #FFF; max-width: 100%; font-size: 1.15rem; font-weight: 900; box-shadow: 0 8px 24px rgba(22, 163, 74, 0.45);">
               GET MASTER COLLECTION FOR JUST $27 →
             </a>
           </div>
