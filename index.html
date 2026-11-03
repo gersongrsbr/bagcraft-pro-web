@@ -1274,20 +1274,17 @@
       transform: translateX(-50%);
       background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
       color: #FFFFFF;
-      font-size: 0.82rem;
-      font-weight: 900;
-      padding: 7px 22px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 6px 14px;
       border-radius: 30px;
       box-shadow: 0 4px 16px rgba(217, 119, 6, 0.5);
       white-space: nowrap;
       letter-spacing: 0.04em;
       border: 1px solid rgba(255, 255, 255, 0.35);
+      max-width: 90%;
+      box-sizing: border-box;
     }
-      border-radius: var(--radius-full);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      white-space: nowrap;
-      box-shadow: 0 4px 14px rgba(217, 119, 6, 0.45);
     }
 
     .pricing-header {
@@ -2046,6 +2043,342 @@
         width: 100%;
       }
     }
+  
+    /* ==========================================================================
+       CANONICAL 3-ROW BIDIRECTIONAL MARQUEE CAROUSEL
+       ========================================================================== */
+    .marquee-carousel-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin: 36px 0 20px 0;
+      padding: 10px 0;
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+
+    .marquee-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      width: max-content;
+      will-change: transform;
+    }
+
+    .marquee-row.to-left {
+      animation: marqueeRowLeft 32s linear infinite;
+    }
+
+    .marquee-row.to-right {
+      animation: marqueeRowRight 32s linear infinite;
+    }
+
+    .marquee-carousel-wrapper:hover .marquee-row {
+      animation-play-state: paused;
+    }
+
+    @keyframes marqueeRowLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-50% - 8px)); }
+    }
+
+    @keyframes marqueeRowRight {
+      0% { transform: translateX(calc(-50% - 8px)); }
+      100% { transform: translateX(0); }
+    }
+
+    .marquee-item {
+      flex: 0 0 220px;
+      width: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #FFFFFF;
+      border: 1px solid rgba(45, 74, 62, 0.12);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      position: relative;
+      transition: transform 0.2s ease;
+    }
+
+    .marquee-item:hover {
+      transform: scale(1.03);
+    }
+
+    .marquee-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .marquee-item-caption {
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--forest);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      background: #FFFFFF;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .marquee-item-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: var(--terracotta-light);
+      color: var(--terracotta);
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+      .marquee-carousel-wrapper {
+        margin: 24px 0 16px 0;
+        mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+      }
+      .marquee-row {
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+      .marquee-item {
+        flex: 0 0 165px;
+        width: 165px;
+        border-radius: 10px;
+      }
+      .marquee-item img {
+        height: 125px;
+      }
+      .marquee-item-caption {
+        padding: 6px 10px;
+        font-size: 0.72rem;
+      }
+      .marquee-item-badge {
+        font-size: 0.6rem;
+        padding: 2px 5px;
+      }
+    }
+
+    /* ==========================================================================
+       MOBILE-FIRST COMPACT UPSELL MODAL
+       ========================================================================== */
+    .upsell-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 26, 21, 0.75);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 999999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      box-sizing: border-box;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .upsell-modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .upsell-modal-card {
+      background: #FFFFFF;
+      border-radius: 18px;
+      max-width: 440px;
+      width: 100%;
+      max-height: 94vh;
+      overflow-y: auto;
+      padding: 22px 20px 20px 20px;
+      box-sizing: border-box;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      border: 2px solid #FFC83D;
+      position: relative;
+      text-align: center;
+      animation: modalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalSlideUp {
+      from { transform: translateY(20px) scale(0.97); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .upsell-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: #F3EDE4;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: background 0.2s;
+    }
+
+    .upsell-close-btn:hover {
+      background: #E5DDD0;
+    }
+
+    .upsell-badge-pill {
+      display: inline-block;
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #F59E0B;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .upsell-modal-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--forest);
+      line-height: 1.25;
+      margin: 0 0 6px 0;
+    }
+
+    .upsell-modal-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin: 0 0 14px 0;
+    }
+
+    .upsell-compare-box {
+      background: #F8FAF8;
+      border: 1px solid rgba(45, 74, 62, 0.15);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+
+    .upsell-compare-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .upsell-compare-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .upsell-compare-row .check-icon {
+      color: #16A34A;
+      font-weight: 800;
+      flex-shrink: 0;
+      font-size: 0.95rem;
+    }
+
+    .upsell-pricing-highlight {
+      background: linear-gradient(135deg, #1E3A2F 0%, #13271F 100%);
+      color: #FFFFFF;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .upsell-pricing-label {
+      font-size: 0.8rem;
+      color: #C8DCD1;
+      text-align: left;
+      line-height: 1.2;
+    }
+
+    .upsell-pricing-label strong {
+      color: #FFC83D;
+      display: block;
+      font-size: 0.88rem;
+    }
+
+    .upsell-pricing-calc {
+      text-align: right;
+    }
+
+    .upsell-diff-tag {
+      background: #16A34A;
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+
+    .upsell-total-val {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #FFFFFF;
+    }
+
+    .upsell-btn-accept {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #16A34A 0%, #15803D 100%);
+      color: #FFFFFF !important;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 14px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(22, 163, 74, 0.4);
+      margin-bottom: 10px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      box-sizing: border-box;
+      line-height: 1.25;
+    }
+
+    .upsell-btn-accept:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(22, 163, 74, 0.5);
+    }
+
+    .upsell-btn-decline {
+      display: block;
+      color: #64748B !important;
+      font-size: 0.76rem;
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 4px 0;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: center;
+      transition: color 0.15s;
+    }
+
+    .upsell-btn-decline:hover {
+      color: var(--text-dark) !important;
+    }
+
   </style>
 </head>
 <body>
@@ -2160,151 +2493,76 @@
         </p>
       </div>
 
-      <div class="gallery-scroll-container">
-        <!-- Card 1 -->
-        <div class="gallery-card">
-          <div class="gallery-img-wrap">
-            <picture>
-              <source srcset="assets/action-01.webp" type="image/webp">
-              <img src="assets/action-01.png" alt="Finished mustard canvas tote bag by Linda M." loading="eager" decoding="async" width="290" height="240">
-            </picture>
-            <span class="gallery-badge">Weekend Project</span>
-          </div>
-          <div class="gallery-info">
-            <div class="gallery-author">
-              <span class="author-name">Linda M.</span>
-              <span class="author-loc">Columbus, OH</span>
-            </div>
-            <p class="gallery-caption">"My Singer handled this 10oz canvas effortlessly thanks to the zero-bulk corner trim. Finished in 2 hours!"</p>
-          </div>
+      
+      <!-- CANONICAL 3-ROW BIDIRECTIONAL MARQUEE CAROUSEL -->
+      <div class="marquee-carousel-wrapper">
+        <!-- ROW 1: SLIDES TO LEFT -->
+        <div class="marquee-row to-left">
+          <!-- Set 1 -->
+          <div class="marquee-item"><picture><source srcset="assets/action-01.webp" type="image/webp"><img src="assets/action-01.png" alt="Mustard Farmer Market Tote" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Market Tote #014</span><span class="marquee-item-badge">Pattern</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/cat-totes.webp" type="image/webp"><img src="assets/cat-totes.png" alt="Everyday Totes Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Classic Totes</span><span class="marquee-item-badge">Vol 1</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-02.webp" type="image/webp"><img src="assets/action-02.png" alt="Olive Canvas Crossbody" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Crossbody #052</span><span class="marquee-item-badge">Pattern</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/cat-crossbody.webp" type="image/webp"><img src="assets/cat-crossbody.png" alt="Crossbody Bags Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Saddle Bags</span><span class="marquee-item-badge">Vol 2</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-03.webp" type="image/webp"><img src="assets/action-03.png" alt="Waxed Canvas Rucksack" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Rucksack #088</span><span class="marquee-item-badge">Pattern</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/cat-backpacks.webp" type="image/webp"><img src="assets/cat-backpacks.png" alt="Backpacks Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Roll-Top Pack</span><span class="marquee-item-badge">Vol 4</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-04.webp" type="image/webp"><img src="assets/action-04.png" alt="Boxed Toiletry Pouch" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Dopp Kit #121</span><span class="marquee-item-badge">Pattern</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/cat-pouches.webp" type="image/webp"><img src="assets/cat-pouches.png" alt="Pouches Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Box Pouches</span><span class="marquee-item-badge">Vol 3</span></div></div>
+          <!-- Set 2 (Clone for seamless loop) -->
+          <div class="marquee-item"><picture><source srcset="assets/action-01.webp" type="image/webp"><img src="assets/action-01.png" alt="Mustard Farmer Market Tote" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Market Tote #014</span><span class="marquee-item-badge">Pattern</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/cat-totes.webp" type="image/webp"><img src="assets/cat-totes.png" alt="Everyday Totes Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Classic Totes</span><span class="marquee-item-badge">Vol 1</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-02.webp" type="image/webp"><img src="assets/action-02.png" alt="Olive Canvas Crossbody" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Crossbody #052</span><span class="marquee-item-badge">Pattern</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/cat-crossbody.webp" type="image/webp"><img src="assets/cat-crossbody.png" alt="Crossbody Bags Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Saddle Bags</span><span class="marquee-item-badge">Vol 2</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-03.webp" type="image/webp"><img src="assets/action-03.png" alt="Waxed Canvas Rucksack" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Rucksack #088</span><span class="marquee-item-badge">Pattern</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/cat-backpacks.webp" type="image/webp"><img src="assets/cat-backpacks.png" alt="Backpacks Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Roll-Top Pack</span><span class="marquee-item-badge">Vol 4</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-04.webp" type="image/webp"><img src="assets/action-04.png" alt="Boxed Toiletry Pouch" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Dopp Kit #121</span><span class="marquee-item-badge">Pattern</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/cat-pouches.webp" type="image/webp"><img src="assets/cat-pouches.png" alt="Pouches Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Box Pouches</span><span class="marquee-item-badge">Vol 3</span></div></div>
         </div>
 
-        <!-- Card 2 -->
-        <div class="gallery-card">
-          <div class="gallery-img-wrap">
-            <picture>
-              <source srcset="assets/action-02.webp" type="image/webp">
-              <img src="assets/action-02.png" alt="Olive green crossbody bag by Sarah K." loading="eager" decoding="async" width="290" height="240">
-            </picture>
-            <span class="gallery-badge">Etsy Best-Seller</span>
-          </div>
-          <div class="gallery-info">
-            <div class="gallery-author">
-              <span class="author-name">Sarah K.</span>
-              <span class="author-loc">Austin, TX</span>
-            </div>
-            <p class="gallery-caption">"I sell these on Etsy. The commercial license alone paid for this bundle 20 times over on my first week."</p>
-          </div>
+        <!-- ROW 2: SLIDES TO RIGHT -->
+        <div class="marquee-row to-right">
+          <!-- Set 1 -->
+          <div class="marquee-item"><picture><source srcset="assets/action-05.webp" type="image/webp"><img src="assets/action-05.png" alt="Sewing Workshop Studio" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Crafter Studio</span><span class="marquee-item-badge">In Action</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bonus-01-fabric.webp" type="image/webp"><img src="assets/bonus-01-fabric.png" alt="Fabric & Interfacing Master Guide" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Fabric Guide</span><span class="marquee-item-badge">Bonus #1</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-06.webp" type="image/webp"><img src="assets/action-06.png" alt="Cutting Canvas with Rotary Cutter" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Precision Cut</span><span class="marquee-item-badge">Zero-Bulk</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bonus-02-hardware.webp" type="image/webp"><img src="assets/bonus-02-hardware.png" alt="Hardware & Zipper Sizing Blueprint" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Hardware Blueprint</span><span class="marquee-item-badge">Bonus #2</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-07.webp" type="image/webp"><img src="assets/action-07.png" alt="Commercial Craft Stall with Finished Bags" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Farmer Market Stall</span><span class="marquee-item-badge">Commercial</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bonus-03-license.webp" type="image/webp"><img src="assets/bonus-03-license.png" alt="Commercial Handcrafted License" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Etsy License</span><span class="marquee-item-badge">Bonus #3</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-08.webp" type="image/webp"><img src="assets/action-08.png" alt="Sewing Machine Stitching Bag Corners" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Home Machine Test</span><span class="marquee-item-badge">Smooth</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bonus-04-printing.webp" type="image/webp"><img src="assets/bonus-04-printing.png" alt="100% Scale At-Home Print Cheat Sheet" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Print Cheat Sheet</span><span class="marquee-item-badge">Bonus #4</span></div></div>
+          <!-- Set 2 (Clone for seamless loop) -->
+          <div class="marquee-item"><picture><source srcset="assets/action-05.webp" type="image/webp"><img src="assets/action-05.png" alt="Sewing Workshop Studio" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Crafter Studio</span><span class="marquee-item-badge">In Action</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bonus-01-fabric.webp" type="image/webp"><img src="assets/bonus-01-fabric.png" alt="Fabric & Interfacing Master Guide" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Fabric Guide</span><span class="marquee-item-badge">Bonus #1</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-06.webp" type="image/webp"><img src="assets/action-06.png" alt="Cutting Canvas with Rotary Cutter" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Precision Cut</span><span class="marquee-item-badge">Zero-Bulk</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bonus-02-hardware.webp" type="image/webp"><img src="assets/bonus-02-hardware.png" alt="Hardware & Zipper Sizing Blueprint" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Hardware Blueprint</span><span class="marquee-item-badge">Bonus #2</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-07.webp" type="image/webp"><img src="assets/action-07.png" alt="Commercial Craft Stall with Finished Bags" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Farmer Market Stall</span><span class="marquee-item-badge">Commercial</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bonus-03-license.webp" type="image/webp"><img src="assets/bonus-03-license.png" alt="Commercial Handcrafted License" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Etsy License</span><span class="marquee-item-badge">Bonus #3</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-08.webp" type="image/webp"><img src="assets/action-08.png" alt="Sewing Machine Stitching Bag Corners" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Home Machine Test</span><span class="marquee-item-badge">Smooth</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bonus-04-printing.webp" type="image/webp"><img src="assets/bonus-04-printing.png" alt="100% Scale At-Home Print Cheat Sheet" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Print Cheat Sheet</span><span class="marquee-item-badge">Bonus #4</span></div></div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="gallery-card">
-          <div class="gallery-img-wrap">
-            <picture>
-              <source srcset="assets/action-03.webp" type="image/webp">
-              <img src="assets/action-03.png" alt="Roll-top backpack by Emily R." loading="eager" decoding="async" width="290" height="240">
-            </picture>
-            <span class="gallery-badge">Zero Puckering</span>
-          </div>
-          <div class="gallery-info">
-            <div class="gallery-author">
-              <span class="author-name">Emily R.</span>
-              <span class="author-loc">Portland, OR</span>
-            </div>
-            <p class="gallery-caption">"The zipper sandwich diagram finally made zippers click for me! No wavy seams or caught teeth."</p>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="gallery-card">
-          <div class="gallery-img-wrap">
-            <picture>
-              <source srcset="assets/action-04.webp" type="image/webp">
-              <img src="assets/action-04.png" alt="Cosmetic pouch trio by Barbara K." loading="eager" decoding="async" width="290" height="240">
-            </picture>
-            <span class="gallery-badge">Quick Gift Set</span>
-          </div>
-          <div class="gallery-info">
-            <div class="gallery-author">
-              <span class="author-name">Barbara K.</span>
-              <span class="author-loc">Denver, CO</span>
-            </div>
-            <p class="gallery-caption">"Made 5 of these boxed pouches for holiday gifts. The lining fits like a glove with zero excess fabric pooling!"</p>
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="gallery-card">
-          <div class="gallery-img-wrap">
-            <picture>
-              <source srcset="assets/action-05.webp" type="image/webp">
-              <img src="assets/action-05.png" alt="Rotary cutting canvas with precision seam allowances by Rachel T." loading="eager" decoding="async" width="290" height="240">
-            </picture>
-            <span class="gallery-badge">Precision Seams</span>
-          </div>
-          <div class="gallery-info">
-            <div class="gallery-author">
-              <span class="author-name">Rachel T.</span>
-              <span class="author-loc">Seattle, WA</span>
-            </div>
-            <p class="gallery-caption">"The included 1/2-inch seam allowances cut my cutting time in half. No more measuring every seam manually!"</p>
-          </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="gallery-card">
-          <div class="gallery-img-wrap">
-            <picture>
-              <source srcset="assets/action-06.webp" type="image/webp">
-              <img src="assets/action-06.png" alt="Sewist holding printed pattern guide and finished navy tote by Megan W." loading="eager" decoding="async" width="290" height="240">
-            </picture>
-            <span class="gallery-badge">Pattern Pride</span>
-          </div>
-          <div class="gallery-info">
-            <div class="gallery-author">
-              <span class="author-name">Megan W.</span>
-              <span class="author-loc">Nashville, TN</span>
-            </div>
-            <p class="gallery-caption">"Printed the guide right on my home printer. The step-by-step layout feels like a masterclass in a binder."</p>
-          </div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="gallery-card">
-          <div class="gallery-img-wrap">
-            <picture>
-              <source srcset="assets/action-07.webp" type="image/webp">
-              <img src="assets/action-07.png" alt="Sewing zipper tape cleanly onto canvas by Jessica D." loading="eager" decoding="async" width="290" height="240">
-            </picture>
-            <span class="gallery-badge">Flawless Zippers</span>
-          </div>
-          <div class="gallery-info">
-            <div class="gallery-author">
-              <span class="author-name">Jessica D.</span>
-              <span class="author-loc">Charlotte, NC</span>
-            </div>
-            <p class="gallery-caption">"Sewing zippers into curved gussets used to terrify me. This sandwich technique made it smooth on the first try."</p>
-          </div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="gallery-card">
-          <div class="gallery-img-wrap">
-            <picture>
-              <source srcset="assets/action-08.webp" type="image/webp">
-              <img src="assets/action-08.png" alt="Mother and daughter sewing matching tote bags by Karen & Chloe S." loading="eager" decoding="async" width="290" height="240">
-            </picture>
-            <span class="gallery-badge">Family Sewing</span>
-          </div>
-          <div class="gallery-info">
-            <div class="gallery-author">
-              <span class="author-name">Karen & Chloe S.</span>
-              <span class="author-loc">Madison, WI</span>
-            </div>
-            <p class="gallery-caption">"My 14-year-old daughter and I spent Sunday sewing matching canvas totes. Clear instructions made it so fun!"</p>
-          </div>
+        <!-- ROW 3: SLIDES TO LEFT -->
+        <div class="marquee-row to-left">
+          <!-- Set 1 -->
+          <div class="marquee-item"><picture><source srcset="assets/bump-zippers.webp" type="image/webp"><img src="assets/bump-zippers.png" alt="Pro Zipper Installation Guide" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Zipper Blueprint</span><span class="marquee-item-badge">Technique</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-01.webp" type="image/webp"><img src="assets/action-01.png" alt="Mustard Farmer Market Tote" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Box Bottom Detail</span><span class="marquee-item-badge">Crisp</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bump-interfacing.webp" type="image/webp"><img src="assets/bump-interfacing.png" alt="Interfacing & Stabilizer Cheat Sheet" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Stabilizer Sheet</span><span class="marquee-item-badge">Structure</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-02.webp" type="image/webp"><img src="assets/action-02.png" alt="Olive Canvas Crossbody" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Strap Anchor Point</span><span class="marquee-item-badge">Reinforced</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bump-leather.webp" type="image/webp"><img src="assets/bump-leather.png" alt="Leather & Faux Leather Accent Guide" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Leather Handles</span><span class="marquee-item-badge">Accent</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-03.webp" type="image/webp"><img src="assets/action-03.png" alt="Waxed Canvas Rucksack" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Flap & Buckle</span><span class="marquee-item-badge">Heavy Duty</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bump-pricing.webp" type="image/webp"><img src="assets/bump-pricing.png" alt="Handmade Bag Pricing Calculator" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Pricing Sheet</span><span class="marquee-item-badge">Etsy Profit</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/cat-totes.webp" type="image/webp"><img src="assets/cat-totes.png" alt="Everyday Totes Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>All Totes</span><span class="marquee-item-badge">Ready to Sew</span></div></div>
+          <!-- Set 2 (Clone for seamless loop) -->
+          <div class="marquee-item"><picture><source srcset="assets/bump-zippers.webp" type="image/webp"><img src="assets/bump-zippers.png" alt="Pro Zipper Installation Guide" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Zipper Blueprint</span><span class="marquee-item-badge">Technique</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-01.webp" type="image/webp"><img src="assets/action-01.png" alt="Mustard Farmer Market Tote" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Box Bottom Detail</span><span class="marquee-item-badge">Crisp</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bump-interfacing.webp" type="image/webp"><img src="assets/bump-interfacing.png" alt="Interfacing & Stabilizer Cheat Sheet" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Stabilizer Sheet</span><span class="marquee-item-badge">Structure</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-02.webp" type="image/webp"><img src="assets/action-02.png" alt="Olive Canvas Crossbody" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Strap Anchor Point</span><span class="marquee-item-badge">Reinforced</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bump-leather.webp" type="image/webp"><img src="assets/bump-leather.png" alt="Leather & Faux Leather Accent Guide" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Leather Handles</span><span class="marquee-item-badge">Accent</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/action-03.webp" type="image/webp"><img src="assets/action-03.png" alt="Waxed Canvas Rucksack" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Flap & Buckle</span><span class="marquee-item-badge">Heavy Duty</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/bump-pricing.webp" type="image/webp"><img src="assets/bump-pricing.png" alt="Handmade Bag Pricing Calculator" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Pricing Sheet</span><span class="marquee-item-badge">Etsy Profit</span></div></div>
+          <div class="marquee-item"><picture><source srcset="assets/cat-totes.webp" type="image/webp"><img src="assets/cat-totes.png" alt="Everyday Totes Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>All Totes</span><span class="marquee-item-badge">Ready to Sew</span></div></div>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -2914,7 +3172,7 @@
           </ul>
 
           <div class="checkout-btn">
-            <a href="https://pay.hotmart.com/B98234821X?off=basic&checkoutMode=10" target="_self" data-utmify-checkout="true" class="btn-cta" style="background: #F3EDE4; border: 1px solid var(--border-subtle); color: var(--forest); max-width: 100%; font-size: 0.95rem; font-weight: 700; box-shadow: none;">
+            <a href="https://pay.hotmart.com/B98234821X?off=basic&checkoutMode=10" target="_self" data-utmify-checkout="true" onclick="openUpsellModal(event)" class="btn-cta" style="background: #F3EDE4; border: 1px solid var(--border-subtle); color: var(--forest); max-width: 100%; font-size: 0.95rem; font-weight: 700; box-shadow: none;">
               GET STARTER PACK FOR $14.90 →
             </a>
           </div>
@@ -3278,5 +3536,87 @@
       });
     })();
   </script>
+
+  <!-- MOBILE-FIRST COMPACT UPSELL MODAL -->
+  <div class="upsell-modal-overlay" id="upsellModal" onclick="handleModalOverlayClick(event)">
+    <div class="upsell-modal-card">
+      <button class="upsell-close-btn" onclick="closeUpsellModal()" aria-label="Close modal">&times;</button>
+      
+      <span class="upsell-badge-pill">⚡ SPECIAL UPGRADE OPPORTUNITY</span>
+      <h3 class="upsell-modal-title">Upgrade to the Full Master Vault?</h3>
+      <p class="upsell-modal-subtitle">
+        For only <strong>$12.10 more</strong>, unlock all 200+ patterns instead of just 36!
+      </p>
+
+      <div class="upsell-compare-box">
+        <div class="upsell-compare-row">
+          <span class="check-icon">✓</span>
+          <div><strong>All 200+ Patterns:</strong> Every tote, crossbody, backpack, and pouch (vs only 36).</div>
+        </div>
+        <div class="upsell-compare-row">
+          <span class="check-icon">✓</span>
+          <div><strong>Commercial License ($47 Value):</strong> Sell finished bags on Etsy or craft markets legally.</div>
+        </div>
+        <div class="upsell-compare-row">
+          <span class="check-icon">✓</span>
+          <div><strong>All 5 Pro Bonuses ($197 Value):</strong> Fabric guide, hardware blueprint, and cheat sheets.</div>
+        </div>
+        <div class="upsell-compare-row">
+          <span class="check-icon">✓</span>
+          <div><strong>Free Lifetime Updates:</strong> Every future pattern volume delivered to your inbox.</div>
+        </div>
+      </div>
+
+      <div class="upsell-pricing-highlight">
+        <div class="upsell-pricing-label">
+          <span>Master Collection Upgrade</span>
+          <strong>200+ Patterns + All Bonuses</strong>
+        </div>
+        <div class="upsell-pricing-calc">
+          <span class="upsell-diff-tag">+ ONLY $12.10</span>
+          <div class="upsell-total-val">$27.00</div>
+        </div>
+      </div>
+
+      <a href="https://pay.hotmart.com/B98234821X?off=premium&checkoutMode=10" target="_self" data-utmify-checkout="true" class="upsell-btn-accept">
+        YES, UPGRADE TO MASTER COLLECTION ($27) →
+      </a>
+
+      <a href="https://pay.hotmart.com/B98234821X?off=basic&checkoutMode=10" target="_self" data-utmify-checkout="true" class="upsell-btn-decline">
+        No thanks, continue with Starter Pack for $14.90 →
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function openUpsellModal(e) {
+      if (e) e.preventDefault();
+      const modal = document.getElementById('upsellModal');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeUpsellModal() {
+      const modal = document.getElementById('upsellModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function handleModalOverlayClick(e) {
+      if (e.target && e.target.id === 'upsellModal') {
+        closeUpsellModal();
+      }
+    }
+
+    // Escape key closes modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeUpsellModal();
+    });
+  </script>
+
 </body>
 </html>
