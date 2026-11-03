@@ -546,7 +546,9 @@
     }
 
     .cat-thumb {
-      height: 200px;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      height: auto;
       background: var(--bg-warm);
       overflow: hidden;
       position: relative;
@@ -1115,25 +1117,25 @@
        ========================================================================== */
     .pricing-section {
       padding: 90px 0 100px 0;
-      background: radial-gradient(circle at 50% 15%, rgba(65, 138, 98, 0.28) 0%, transparent 60%), linear-gradient(180deg, #183627 0%, #0F2318 100%);
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      background: var(--bg-cream);
+      border-top: 1px solid var(--border-subtle);
       position: relative;
     }
 
     .pricing-section .section-eyebrow {
-      background: rgba(255, 200, 61, 0.18);
-      color: #FFC83D;
-      border: 1px solid rgba(255, 200, 61, 0.4);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      background: var(--terracotta-light);
+      color: var(--terracotta);
+      border: 1px solid rgba(194, 94, 62, 0.3);
+      box-shadow: none;
     }
 
     .pricing-section .section-title {
-      color: #FFFFFF;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+      color: var(--forest);
+      text-shadow: none;
     }
 
     .pricing-section .section-desc {
-      color: #D6E8DF;
+      color: var(--text-muted);
       max-width: 680px;
       margin: 14px auto 0 auto;
     }
@@ -1156,108 +1158,131 @@
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    /* Basic plan: Frosted Glass Dark Emerald */
+    /* Basic plan: Understated Clean White (Modest & Low-Key) */
     .pricing-card:not(.featured) {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(12px);
+      background: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
 
     .pricing-card:not(.featured) .plan-name {
-      color: #FFFFFF;
+      color: var(--forest);
+      font-size: 1.45rem;
     }
 
     .pricing-card:not(.featured) .plan-desc {
-      color: #C2D6CC;
+      color: var(--text-muted);
     }
 
-    .pricing-card:not(.featured) .price-curr,
+    .pricing-card:not(.featured) .price-curr {
+      color: var(--text-dark);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
     .pricing-card:not(.featured) .price-now {
-      color: #FFFFFF;
+      color: var(--text-dark);
+      font-size: 2.8rem;
+      font-weight: 800;
+      font-family: var(--font-heading);
     }
 
     .pricing-card:not(.featured) .price-tagline {
-      color: #9FE3BC;
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
     }
 
     .pricing-card:not(.featured) .plan-features li {
-      color: #E2ECE6;
+      color: var(--text-muted);
     }
 
     .pricing-card:not(.featured) .plan-features li::before {
-      color: #4ADE80;
+      color: var(--forest);
     }
 
     .pricing-card:not(.featured) .plan-features li.disabled {
-      color: rgba(255, 255, 255, 0.4);
+      color: #A0AEC0;
+      opacity: 0.65;
     }
 
     .pricing-card:not(.featured) .plan-features li.disabled::before {
-      color: rgba(255, 255, 255, 0.25);
+      color: #CBD5E1;
     }
 
-    /* Featured plan: Pure White Luxury with Glowing Gold & Emerald Accent */
+    /* Featured plan: Deep Luxury Forest Green with Gold & Emerald Accents (Hero Card) */
     .pricing-card.featured {
-      background: #FFFFFF;
-      border: 3px solid #FFC83D;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 200, 61, 0.3);
+      background: linear-gradient(165deg, #1E3A2F 0%, #13271F 100%);
+      border: 2.5px solid #FFC83D;
+      box-shadow: 0 24px 60px rgba(19, 39, 31, 0.4), 0 0 35px rgba(255, 200, 61, 0.25);
       transform: translateY(-10px);
+      color: #FFFFFF;
     }
 
     .pricing-card.featured .plan-name {
-      color: #183627;
-      font-size: 1.65rem;
+      color: #FFFFFF;
+      font-size: 1.75rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
     .pricing-card.featured .plan-desc {
-      color: #4A5568;
+      color: #C8DCD1;
     }
 
     .pricing-card.featured .price-old {
-      color: #94A3B8;
+      color: #8BA397;
     }
 
     .pricing-card.featured .price-curr {
-      color: #16A34A;
+      color: #4ADE80;
     }
 
     .pricing-card.featured .price-now {
-      color: #16A34A;
-      font-size: 3.4rem;
+      color: #FFFFFF;
+      font-size: 3.5rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
     }
 
     .pricing-card.featured .price-tagline {
-      background: #FEF3C7;
-      color: #B45309;
+      background: rgba(255, 200, 61, 0.16);
+      color: #FFC83D;
+      border: 1px solid rgba(255, 200, 61, 0.35);
       padding: 5px 14px;
       border-radius: 6px;
       font-weight: 800;
       display: inline-block;
+      letter-spacing: 0.05em;
     }
 
     .pricing-card.featured .plan-features li {
-      color: #1E293B;
+      color: #E2ECE6;
     }
 
     .pricing-card.featured .plan-features li strong {
-      color: #0F172A;
+      color: #FFFFFF;
     }
 
     .pricing-card.featured .plan-features li::before {
-      color: #16A34A;
+      color: #4ADE80;
     }
 
     .pricing-ribbon {
       position: absolute;
-      top: -15px;
+      top: -16px;
       left: 50%;
       transform: translateX(-50%);
       background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
       color: #FFFFFF;
-      font-size: 0.8rem;
-      font-weight: 800;
-      padding: 6px 20px;
+      font-size: 0.82rem;
+      font-weight: 900;
+      padding: 7px 22px;
+      border-radius: 30px;
+      box-shadow: 0 4px 16px rgba(217, 119, 6, 0.5);
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
       border-radius: var(--radius-full);
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -1400,65 +1425,7 @@
       margin-bottom: 14px;
     }
 
-    /* ==========================================================================
-       SECTION 20: ORDER BUMPS SHOWCASE (PREVIEW)
-       ========================================================================== */
-    .bumps-preview-section {
-      padding: 70px 0;
-      background: var(--bg-cream);
-    }
 
-    .bumps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 36px;
-    }
-
-    .bump-preview-card {
-      background: var(--bg-card);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      border: 1px solid var(--border-subtle);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .bump-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 10px;
-    }
-
-    .bump-tag {
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: var(--forest);
-      background: var(--forest-light);
-      padding: 2px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-    }
-
-    .bump-price {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--terracotta);
-    }
-
-    .bump-title {
-      font-size: 1.05rem;
-      margin-bottom: 8px;
-      color: var(--text-dark);
-    }
-
-    .bump-desc {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      line-height: 1.45;
-    }
 
     /* ==========================================================================
        SECTION 21: FAQ ACCORDION
@@ -1724,6 +1691,11 @@
         flex-direction: column;
         text-align: center;
         padding: 30px 20px;
+        gap: 20px;
+      }
+      .license-content {
+        flex: 0 0 auto;
+        width: 100%;
       }
       .license-badge {
         flex: 0 0 auto;
@@ -2019,18 +1991,7 @@
         font-size: 1.45rem;
       }
 
-      .bumps-preview-section {
-        padding: 44px 0;
-      }
 
-      .bumps-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      .bump-preview-card {
-        padding: 16px 14px;
-      }
 
       .faq-section {
         padding: 44px 0;
@@ -2953,7 +2914,7 @@
           </ul>
 
           <div class="checkout-btn">
-            <a href="https://pay.hotmart.com/B98234821X?off=basic&checkoutMode=10" target="_self" data-utmify-checkout="true" class="btn-cta" style="background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.35); color: #FFF; max-width: 100%; font-size: 0.95rem;">
+            <a href="https://pay.hotmart.com/B98234821X?off=basic&checkoutMode=10" target="_self" data-utmify-checkout="true" class="btn-cta" style="background: #F3EDE4; border: 1px solid var(--border-subtle); color: var(--forest); max-width: 100%; font-size: 0.95rem; font-weight: 700; box-shadow: none;">
               GET STARTER PACK FOR $14.90 →
             </a>
           </div>
@@ -2966,7 +2927,7 @@
           <div class="pricing-header">
             <h3 class="plan-name">Master Collection</h3>
             <p class="plan-desc">The complete vault with lifetime updates</p>
-            <div style="margin: 14px auto; max-width: 260px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.14);">
+            <div style="margin: 14px auto; max-width: 260px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 0 0 1px rgba(255, 200, 61, 0.35);">
               <picture>
                 <source srcset="assets/mockup-premium.webp" type="image/webp">
                 <img src="assets/mockup-premium.png" alt="Master Collection Mockup +200 Patterns" width="260" height="260" loading="lazy">
@@ -2993,7 +2954,7 @@
           </ul>
 
           <div class="checkout-btn">
-            <a href="https://pay.hotmart.com/B98234821X?off=premium&checkoutMode=10" target="_self" data-utmify-checkout="true" class="btn-cta" style="background: linear-gradient(135deg, #16A34A 0%, #15803D 100%); color: #FFF; max-width: 100%; font-size: 1.15rem; font-weight: 900; box-shadow: 0 8px 24px rgba(22, 163, 74, 0.45);">
+            <a href="https://pay.hotmart.com/B98234821X?off=premium&checkoutMode=10" target="_self" data-utmify-checkout="true" class="btn-cta" style="background: linear-gradient(135deg, #16A34A 0%, #15803D 100%); color: #FFF; max-width: 100%; font-size: 1.18rem; font-weight: 900; box-shadow: 0 8px 30px rgba(22, 163, 74, 0.6);">
               GET MASTER COLLECTION FOR JUST $27 →
             </a>
           </div>
@@ -3028,114 +2989,7 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       SECTION 20: ORDER BUMPS SHOWCASE (PREVIEW)
-       ========================================================================== -->
-  <section class="bumps-preview-section">
-    <div class="container">
-      <div style="text-align: center;">
-        <span class="section-eyebrow">CUSTOMIZE AT CHECKOUT</span>
-        <h2 class="section-title">Upgrade Your Toolset with Exclusive Pro Add-Ons</h2>
-        <p class="section-desc">
-          Available on the checkout page individually or bundled in our Mega Master Kit at 65% off.
-        </p>
-      </div>
 
-      <div class="bumps-grid">
-        <!-- Bump 1 -->
-        <div class="bump-preview-card">
-          <div style="margin-bottom: 12px; border-radius: 8px; overflow: hidden; background: var(--bg-cream);">
-            <picture>
-              <source srcset="assets/bump-interfacing.webp" type="image/webp">
-              <img src="assets/bump-interfacing.png" alt="The Ultimate Interfacing Master Guide" width="280" height="190" loading="lazy" style="width: 100%; height: 160px; object-fit: cover;">
-            </picture>
-          </div>
-          <div>
-            <div class="bump-header">
-              <span class="bump-tag">Add-On #1</span>
-              <span class="bump-price">$6.90</span>
-            </div>
-            <h4 class="bump-title">The Ultimate Interfacing & Stabilizer Master Guide</h4>
-            <p class="bump-desc">38-page visual reference comparing Pellon SF101, fusible fleece, Decovil light, and foam stabilizers.</p>
-          </div>
-        </div>
-
-        <!-- Bump 2 -->
-        <div class="bump-preview-card">
-          <div style="margin-bottom: 12px; border-radius: 8px; overflow: hidden; background: var(--bg-cream);">
-            <picture>
-              <source srcset="assets/bump-zippers.webp" type="image/webp">
-              <img src="assets/bump-zippers.png" alt="Flawless Zippers & Pockets Masterclass" width="280" height="190" loading="lazy" style="width: 100%; height: 160px; object-fit: cover;">
-            </picture>
-          </div>
-          <div>
-            <div class="bump-header">
-              <span class="bump-tag">Add-On #2</span>
-              <span class="bump-price">$6.90</span>
-            </div>
-            <h4 class="bump-title">Flawless Zippers & Pockets Masterclass</h4>
-            <p class="bump-desc">20 advanced zipper insertion techniques including invisible zippers, double-slider pockets, and welt finishes.</p>
-          </div>
-        </div>
-
-        <!-- Bump 3 -->
-        <div class="bump-preview-card">
-          <div style="margin-bottom: 12px; border-radius: 8px; overflow: hidden; background: var(--bg-cream);">
-            <picture>
-              <source srcset="assets/bump-pricing.webp" type="image/webp">
-              <img src="assets/bump-pricing.png" alt="Handmade Bag Pricing & Etsy Toolkit" width="280" height="190" loading="lazy" style="width: 100%; height: 160px; object-fit: cover;">
-            </picture>
-          </div>
-          <div>
-            <div class="bump-header">
-              <span class="bump-tag">Add-On #3</span>
-              <span class="bump-price">$5.90</span>
-            </div>
-            <h4 class="bump-title">Handmade Bag Pricing & Etsy Toolkit</h4>
-            <p class="bump-desc">Automated Google Sheets / Excel pricing calculator plus photography and keyword guide for Etsy craft sellers.</p>
-          </div>
-        </div>
-
-        <!-- Bump 4 -->
-        <div class="bump-preview-card">
-          <div style="margin-bottom: 12px; border-radius: 8px; overflow: hidden; background: var(--bg-cream);">
-            <picture>
-              <source srcset="assets/bump-leather.webp" type="image/webp">
-              <img src="assets/bump-leather.png" alt="Leather & Faux Leather Accent Guide" width="280" height="190" loading="lazy" style="width: 100%; height: 160px; object-fit: cover;">
-            </picture>
-          </div>
-          <div>
-            <div class="bump-header">
-              <span class="bump-tag">Add-On #4</span>
-              <span class="bump-price">$5.90</span>
-            </div>
-            <h4 class="bump-title">Leather & Faux Leather Accent Guide</h4>
-            <p class="bump-desc">How to sew genuine leather handles, rivets, and corner guards on your standard domestic sewing machine.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- BUMP 5: MEGA COMBO TOTAL -->
-      <div style="margin-top: 30px; background: linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 100%); color: #FFF; border-radius: var(--radius-lg); padding: 32px 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 26px; border: 2px solid var(--gold); box-shadow: 0 10px 30px rgba(27, 49, 40, 0.25);">
-        <div style="flex: 0 0 200px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
-          <picture>
-            <source srcset="assets/bump-combo.webp" type="image/webp">
-            <img src="assets/bump-combo.png" alt="Mega BagMaker Master Bundle" width="200" height="200" loading="lazy" style="width: 100%; height: auto;">
-          </picture>
-        </div>
-        <div style="flex: 1 1 400px;">
-          <div style="display: inline-block; background: var(--gold); color: var(--forest-dark); font-size: 0.75rem; font-weight: 800; padding: 3px 10px; border-radius: 4px; text-transform: uppercase; margin-bottom: 8px;">BEST CHECKOUT ADD-ON • 65% OFF</div>
-          <h3 style="color: #FFF; font-size: 1.6rem; margin-bottom: 8px;">Mega BagMaker Master Bundle (All 4 Toolkits)</h3>
-          <p style="color: #D2DDD7; font-size: 0.94rem; line-height: 1.5; margin-bottom: 12px;">Get all 4 specialized guides together at checkout for just $12.90 USD (individual value $25.60 USD). 70%+ of makers add this to their order.</p>
-          <div style="display: flex; align-items: baseline; gap: 10px;">
-            <span style="font-size: 1.1rem; text-decoration: line-through; color: #9EAEA5;">$25.60</span>
-            <span style="font-size: 2.2rem; font-weight: 800; font-family: var(--font-heading); color: var(--gold);">$12.90</span>
-            <span style="font-size: 0.85rem; color: #FFF; font-weight: 700;">ONE-TIME ADD-ON AT CHECKOUT</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ==========================================================================
        SECTION 21: FAQ ACCORDION
