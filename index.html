@@ -183,38 +183,50 @@
     /* ==========================================================================
        SECTION 1: MARQUEE CONTINUO INFINITO
        ========================================================================== */
+    
     .top-marquee-bar {
-      background: var(--forest);
+      background: #1C332B;
       color: #FFFFFF;
       font-size: 0.82rem;
       font-weight: 700;
       letter-spacing: 0.04em;
-      padding: 10px 0;
+      padding: 9px 0;
       overflow: hidden;
       white-space: nowrap;
       position: relative;
       z-index: 100;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    .marquee-track {
+    .top-marquee-track {
       display: inline-flex;
-      animation: marquee-scroll 32s linear infinite;
+      animation: topMarqueeScroll 28s linear infinite;
     }
 
-    .marquee-item {
+    .top-bar-item {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 0 28px;
+      padding: 0 24px;
+      color: #FFFFFF !important;
+      font-size: 0.80rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
     }
 
-    .marquee-item span.icon {
-      color: var(--gold);
+    .top-bar-item span.icon {
+      color: #FFC83D;
+      font-size: 0.95rem;
     }
 
-    @keyframes marquee-scroll {
+    @keyframes topMarqueeScroll {
       0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
       100% { transform: translateX(-50%); }
     }
 
@@ -2044,20 +2056,21 @@
       }
     }
   
+    
     /* ==========================================================================
-       CANONICAL 3-ROW BIDIRECTIONAL MARQUEE CAROUSEL
+       CANONICAL 3-ROW A4 DELIVERABLE SHEETS MARQUEE CAROUSEL
        ========================================================================== */
-    .marquee-carousel-wrapper {
+    .a4-marquee-wrapper {
       position: relative;
       width: 100%;
       overflow: hidden;
       margin: 36px 0 20px 0;
-      padding: 10px 0;
-      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      padding: 14px 0;
+      mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
     }
 
-    .marquee-row {
+    .a4-marquee-row {
       display: flex;
       gap: 16px;
       margin-bottom: 16px;
@@ -2065,104 +2078,72 @@
       will-change: transform;
     }
 
-    .marquee-row.to-left {
-      animation: marqueeRowLeft 32s linear infinite;
+    .a4-marquee-row.to-left {
+      animation: a4MarqueeLeft 36s linear infinite;
     }
 
-    .marquee-row.to-right {
-      animation: marqueeRowRight 32s linear infinite;
+    .a4-marquee-row.to-right {
+      animation: a4MarqueeRight 36s linear infinite;
     }
 
-    .marquee-carousel-wrapper:hover .marquee-row {
+    .a4-marquee-wrapper:hover .a4-marquee-row {
       animation-play-state: paused;
     }
 
-    @keyframes marqueeRowLeft {
+    @keyframes a4MarqueeLeft {
       0% { transform: translateX(0); }
       100% { transform: translateX(calc(-50% - 8px)); }
     }
 
-    @keyframes marqueeRowRight {
+    @keyframes a4MarqueeRight {
       0% { transform: translateX(calc(-50% - 8px)); }
       100% { transform: translateX(0); }
     }
 
-    .marquee-item {
-      flex: 0 0 220px;
-      width: 220px;
-      border-radius: 12px;
-      overflow: hidden;
+    .a4-sheet-card {
+      flex: 0 0 160px;
+      width: 160px;
+      aspect-ratio: 1 / 1.414; /* Standard DIN A4 / US Letter Proportion */
       background: #FFFFFF;
-      border: 1px solid rgba(45, 74, 62, 0.12);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
-      position: relative;
-      transition: transform 0.2s ease;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
     }
 
-    .marquee-item:hover {
-      transform: scale(1.03);
+    .a4-sheet-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
     }
 
-    .marquee-item img {
+    .a4-sheet-card picture,
+    .a4-sheet-card img {
       width: 100%;
-      height: 160px;
+      height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .marquee-item-caption {
-      padding: 8px 12px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--forest);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      background: #FFFFFF;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .marquee-item-badge {
-      font-size: 0.65rem;
-      font-weight: 700;
-      background: var(--terracotta-light);
-      color: var(--terracotta);
-      padding: 2px 6px;
-      border-radius: 4px;
-      text-transform: uppercase;
-    }
-
     @media (max-width: 768px) {
-      .marquee-carousel-wrapper {
-        margin: 24px 0 16px 0;
-        mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
-        -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+      .a4-marquee-wrapper {
+        margin: 20px 0 14px 0;
+        mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
       }
-      .marquee-row {
-        gap: 12px;
-        margin-bottom: 12px;
+      .a4-marquee-row {
+        gap: 10px;
+        margin-bottom: 10px;
       }
-      .marquee-item {
-        flex: 0 0 165px;
-        width: 165px;
-        border-radius: 10px;
-      }
-      .marquee-item img {
-        height: 125px;
-      }
-      .marquee-item-caption {
-        padding: 6px 10px;
-        font-size: 0.72rem;
-      }
-      .marquee-item-badge {
-        font-size: 0.6rem;
-        padding: 2px 5px;
+      .a4-sheet-card {
+        flex: 0 0 115px;
+        width: 115px;
+        border-radius: 4px;
       }
     }
 
-    /* ==========================================================================
+/* ==========================================================================
        MOBILE-FIRST COMPACT UPSELL MODAL
        ========================================================================== */
     .upsell-modal-overlay {
@@ -2387,18 +2368,18 @@
        SECTION 1: TOP ANNOUNCEMENT MARQUEE (CSS INFINITO)
        ========================================================================== -->
   <div class="top-marquee-bar" aria-label="Special Offers">
-    <div class="marquee-track">
-      <div class="marquee-item"><span class="icon">⚡</span> SPECIAL RELEASE OFFER: 70% OFF TODAY</div>
-      <div class="marquee-item"><span class="icon">🛡️</span> 100% RISK-FREE 7-DAY MONEY-BACK GUARANTEE</div>
-      <div class="marquee-item"><span class="icon">📁</span> INSTANT DIGITAL DOWNLOAD (LETTER & A4)</div>
-      <div class="marquee-item"><span class="icon">✂️</span> SEAM ALLOWANCES INCLUDED (1/2" & 3/8")</div>
-      <div class="marquee-item"><span class="icon">🏷️</span> COMMERCIAL LICENSE INCLUDED FOR ETSY SELLERS</div>
-      <!-- Duplicado para loop infinito fluido -->
-      <div class="marquee-item"><span class="icon">⚡</span> SPECIAL RELEASE OFFER: 70% OFF TODAY</div>
-      <div class="marquee-item"><span class="icon">🛡️</span> 100% RISK-FREE 7-DAY MONEY-BACK GUARANTEE</div>
-      <div class="marquee-item"><span class="icon">📁</span> INSTANT DIGITAL DOWNLOAD (LETTER & A4)</div>
-      <div class="marquee-item"><span class="icon">✂️</span> SEAM ALLOWANCES INCLUDED (1/2" & 3/8")</div>
-      <div class="marquee-item"><span class="icon">🏷️</span> COMMERCIAL LICENSE INCLUDED FOR ETSY SELLERS</div>
+    <div class="top-marquee-track">
+      <div class="top-bar-item"><span class="icon">⚡</span> SPECIAL RELEASE OFFER: 70% OFF TODAY</div>
+      <div class="top-bar-item"><span class="icon">🛡️</span> 100% RISK-FREE 7-DAY MONEY-BACK GUARANTEE</div>
+      <div class="top-bar-item"><span class="icon">📁</span> INSTANT DIGITAL DOWNLOAD (LETTER & A4)</div>
+      <div class="top-bar-item"><span class="icon">✂️</span> SEAM ALLOWANCES INCLUDED (1/2" & 3/8")</div>
+      <div class="top-bar-item"><span class="icon">🏷️</span> COMMERCIAL LICENSE INCLUDED FOR ETSY SELLERS</div>
+      <!-- Duplicated for seamless loop -->
+      <div class="top-bar-item"><span class="icon">⚡</span> SPECIAL RELEASE OFFER: 70% OFF TODAY</div>
+      <div class="top-bar-item"><span class="icon">🛡️</span> 100% RISK-FREE 7-DAY MONEY-BACK GUARANTEE</div>
+      <div class="top-bar-item"><span class="icon">📁</span> INSTANT DIGITAL DOWNLOAD (LETTER & A4)</div>
+      <div class="top-bar-item"><span class="icon">✂️</span> SEAM ALLOWANCES INCLUDED (1/2" & 3/8")</div>
+      <div class="top-bar-item"><span class="icon">🏷️</span> COMMERCIAL LICENSE INCLUDED FOR ETSY SELLERS</div>
     </div>
   </div>
 
@@ -2485,83 +2466,21 @@
        ========================================================================== -->
   <section class="action-gallery-section">
     <div class="container">
-      <div style="text-align: center;">
-        <span class="section-eyebrow forest">REAL SEWISTS, REAL BAGS</span>
-        <h2 class="section-title">See What Our Crafters Are Sewing Right Now</h2>
-        <p class="section-desc">
-          Over 4,820 sewists have built functional, beautiful bags on standard home machines. Here are just a few creations from our vibrant community.
-        </p>
-      </div>
 
-      
-      <!-- CANONICAL 3-ROW BIDIRECTIONAL MARQUEE CAROUSEL -->
-      <div class="marquee-carousel-wrapper">
-        <!-- ROW 1: SLIDES TO LEFT -->
-        <div class="marquee-row to-left">
-          <!-- Set 1 -->
-          <div class="marquee-item"><picture><source srcset="assets/action-01.webp" type="image/webp"><img src="assets/action-01.png" alt="Mustard Farmer Market Tote" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Market Tote #014</span><span class="marquee-item-badge">Pattern</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/cat-totes.webp" type="image/webp"><img src="assets/cat-totes.png" alt="Everyday Totes Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Classic Totes</span><span class="marquee-item-badge">Vol 1</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-02.webp" type="image/webp"><img src="assets/action-02.png" alt="Olive Canvas Crossbody" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Crossbody #052</span><span class="marquee-item-badge">Pattern</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/cat-crossbody.webp" type="image/webp"><img src="assets/cat-crossbody.png" alt="Crossbody Bags Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Saddle Bags</span><span class="marquee-item-badge">Vol 2</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-03.webp" type="image/webp"><img src="assets/action-03.png" alt="Waxed Canvas Rucksack" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Rucksack #088</span><span class="marquee-item-badge">Pattern</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/cat-backpacks.webp" type="image/webp"><img src="assets/cat-backpacks.png" alt="Backpacks Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Roll-Top Pack</span><span class="marquee-item-badge">Vol 4</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-04.webp" type="image/webp"><img src="assets/action-04.png" alt="Boxed Toiletry Pouch" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Dopp Kit #121</span><span class="marquee-item-badge">Pattern</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/cat-pouches.webp" type="image/webp"><img src="assets/cat-pouches.png" alt="Pouches Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Box Pouches</span><span class="marquee-item-badge">Vol 3</span></div></div>
-          <!-- Set 2 (Clone for seamless loop) -->
-          <div class="marquee-item"><picture><source srcset="assets/action-01.webp" type="image/webp"><img src="assets/action-01.png" alt="Mustard Farmer Market Tote" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Market Tote #014</span><span class="marquee-item-badge">Pattern</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/cat-totes.webp" type="image/webp"><img src="assets/cat-totes.png" alt="Everyday Totes Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Classic Totes</span><span class="marquee-item-badge">Vol 1</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-02.webp" type="image/webp"><img src="assets/action-02.png" alt="Olive Canvas Crossbody" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Crossbody #052</span><span class="marquee-item-badge">Pattern</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/cat-crossbody.webp" type="image/webp"><img src="assets/cat-crossbody.png" alt="Crossbody Bags Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Saddle Bags</span><span class="marquee-item-badge">Vol 2</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-03.webp" type="image/webp"><img src="assets/action-03.png" alt="Waxed Canvas Rucksack" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Rucksack #088</span><span class="marquee-item-badge">Pattern</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/cat-backpacks.webp" type="image/webp"><img src="assets/cat-backpacks.png" alt="Backpacks Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Roll-Top Pack</span><span class="marquee-item-badge">Vol 4</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-04.webp" type="image/webp"><img src="assets/action-04.png" alt="Boxed Toiletry Pouch" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Dopp Kit #121</span><span class="marquee-item-badge">Pattern</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/cat-pouches.webp" type="image/webp"><img src="assets/cat-pouches.png" alt="Pouches Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Box Pouches</span><span class="marquee-item-badge">Vol 3</span></div></div>
-        </div>
+    <div style="text-align: center; margin-top: 20px;">
+      <span class="section-eyebrow forest">INSIDE THE DELIVERABLE • DIN A4 & US LETTER</span>
+      <h2 class="section-title">Actual Printable Pattern Pages You Receive</h2>
+      <p class="section-desc">
+        Every single pattern includes 100% scale templates, step-by-step CAD blueprints, and seam allowances built in. Print on any standard home printer.
+      </p>
+    </div>
 
-        <!-- ROW 2: SLIDES TO RIGHT -->
-        <div class="marquee-row to-right">
-          <!-- Set 1 -->
-          <div class="marquee-item"><picture><source srcset="assets/action-05.webp" type="image/webp"><img src="assets/action-05.png" alt="Sewing Workshop Studio" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Crafter Studio</span><span class="marquee-item-badge">In Action</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bonus-01-fabric.webp" type="image/webp"><img src="assets/bonus-01-fabric.png" alt="Fabric & Interfacing Master Guide" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Fabric Guide</span><span class="marquee-item-badge">Bonus #1</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-06.webp" type="image/webp"><img src="assets/action-06.png" alt="Cutting Canvas with Rotary Cutter" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Precision Cut</span><span class="marquee-item-badge">Zero-Bulk</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bonus-02-hardware.webp" type="image/webp"><img src="assets/bonus-02-hardware.png" alt="Hardware & Zipper Sizing Blueprint" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Hardware Blueprint</span><span class="marquee-item-badge">Bonus #2</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-07.webp" type="image/webp"><img src="assets/action-07.png" alt="Commercial Craft Stall with Finished Bags" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Farmer Market Stall</span><span class="marquee-item-badge">Commercial</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bonus-03-license.webp" type="image/webp"><img src="assets/bonus-03-license.png" alt="Commercial Handcrafted License" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Etsy License</span><span class="marquee-item-badge">Bonus #3</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-08.webp" type="image/webp"><img src="assets/action-08.png" alt="Sewing Machine Stitching Bag Corners" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Home Machine Test</span><span class="marquee-item-badge">Smooth</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bonus-04-printing.webp" type="image/webp"><img src="assets/bonus-04-printing.png" alt="100% Scale At-Home Print Cheat Sheet" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Print Cheat Sheet</span><span class="marquee-item-badge">Bonus #4</span></div></div>
-          <!-- Set 2 (Clone for seamless loop) -->
-          <div class="marquee-item"><picture><source srcset="assets/action-05.webp" type="image/webp"><img src="assets/action-05.png" alt="Sewing Workshop Studio" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Crafter Studio</span><span class="marquee-item-badge">In Action</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bonus-01-fabric.webp" type="image/webp"><img src="assets/bonus-01-fabric.png" alt="Fabric & Interfacing Master Guide" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Fabric Guide</span><span class="marquee-item-badge">Bonus #1</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-06.webp" type="image/webp"><img src="assets/action-06.png" alt="Cutting Canvas with Rotary Cutter" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Precision Cut</span><span class="marquee-item-badge">Zero-Bulk</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bonus-02-hardware.webp" type="image/webp"><img src="assets/bonus-02-hardware.png" alt="Hardware & Zipper Sizing Blueprint" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Hardware Blueprint</span><span class="marquee-item-badge">Bonus #2</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-07.webp" type="image/webp"><img src="assets/action-07.png" alt="Commercial Craft Stall with Finished Bags" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Farmer Market Stall</span><span class="marquee-item-badge">Commercial</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bonus-03-license.webp" type="image/webp"><img src="assets/bonus-03-license.png" alt="Commercial Handcrafted License" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Etsy License</span><span class="marquee-item-badge">Bonus #3</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-08.webp" type="image/webp"><img src="assets/action-08.png" alt="Sewing Machine Stitching Bag Corners" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Home Machine Test</span><span class="marquee-item-badge">Smooth</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bonus-04-printing.webp" type="image/webp"><img src="assets/bonus-04-printing.png" alt="100% Scale At-Home Print Cheat Sheet" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Print Cheat Sheet</span><span class="marquee-item-badge">Bonus #4</span></div></div>
-        </div>
-
-        <!-- ROW 3: SLIDES TO LEFT -->
-        <div class="marquee-row to-left">
-          <!-- Set 1 -->
-          <div class="marquee-item"><picture><source srcset="assets/bump-zippers.webp" type="image/webp"><img src="assets/bump-zippers.png" alt="Pro Zipper Installation Guide" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Zipper Blueprint</span><span class="marquee-item-badge">Technique</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-01.webp" type="image/webp"><img src="assets/action-01.png" alt="Mustard Farmer Market Tote" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Box Bottom Detail</span><span class="marquee-item-badge">Crisp</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bump-interfacing.webp" type="image/webp"><img src="assets/bump-interfacing.png" alt="Interfacing & Stabilizer Cheat Sheet" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Stabilizer Sheet</span><span class="marquee-item-badge">Structure</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-02.webp" type="image/webp"><img src="assets/action-02.png" alt="Olive Canvas Crossbody" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Strap Anchor Point</span><span class="marquee-item-badge">Reinforced</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bump-leather.webp" type="image/webp"><img src="assets/bump-leather.png" alt="Leather & Faux Leather Accent Guide" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Leather Handles</span><span class="marquee-item-badge">Accent</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-03.webp" type="image/webp"><img src="assets/action-03.png" alt="Waxed Canvas Rucksack" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Flap & Buckle</span><span class="marquee-item-badge">Heavy Duty</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bump-pricing.webp" type="image/webp"><img src="assets/bump-pricing.png" alt="Handmade Bag Pricing Calculator" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Pricing Sheet</span><span class="marquee-item-badge">Etsy Profit</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/cat-totes.webp" type="image/webp"><img src="assets/cat-totes.png" alt="Everyday Totes Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>All Totes</span><span class="marquee-item-badge">Ready to Sew</span></div></div>
-          <!-- Set 2 (Clone for seamless loop) -->
-          <div class="marquee-item"><picture><source srcset="assets/bump-zippers.webp" type="image/webp"><img src="assets/bump-zippers.png" alt="Pro Zipper Installation Guide" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Zipper Blueprint</span><span class="marquee-item-badge">Technique</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-01.webp" type="image/webp"><img src="assets/action-01.png" alt="Mustard Farmer Market Tote" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Box Bottom Detail</span><span class="marquee-item-badge">Crisp</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bump-interfacing.webp" type="image/webp"><img src="assets/bump-interfacing.png" alt="Interfacing & Stabilizer Cheat Sheet" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Stabilizer Sheet</span><span class="marquee-item-badge">Structure</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-02.webp" type="image/webp"><img src="assets/action-02.png" alt="Olive Canvas Crossbody" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Strap Anchor Point</span><span class="marquee-item-badge">Reinforced</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bump-leather.webp" type="image/webp"><img src="assets/bump-leather.png" alt="Leather & Faux Leather Accent Guide" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Leather Handles</span><span class="marquee-item-badge">Accent</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/action-03.webp" type="image/webp"><img src="assets/action-03.png" alt="Waxed Canvas Rucksack" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Flap & Buckle</span><span class="marquee-item-badge">Heavy Duty</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/bump-pricing.webp" type="image/webp"><img src="assets/bump-pricing.png" alt="Handmade Bag Pricing Calculator" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>Pricing Sheet</span><span class="marquee-item-badge">Etsy Profit</span></div></div>
-          <div class="marquee-item"><picture><source srcset="assets/cat-totes.webp" type="image/webp"><img src="assets/cat-totes.png" alt="Everyday Totes Collection" loading="lazy" width="220" height="160"></picture><div class="marquee-item-caption"><span>All Totes</span><span class="marquee-item-badge">Ready to Sew</span></div></div>
-        </div>
-      </div>
+    <!-- 3-ROW CONTINUOUS A4 SHEETS MARQUEE -->
+    <div class="a4-marquee-wrapper">
+      <div class="a4-marquee-row to-left"><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-01.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-01.png?v=20261103" alt="Printable BagCraft Pattern Page #1" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-02.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-02.png?v=20261103" alt="Printable BagCraft Pattern Page #2" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-03.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-03.png?v=20261103" alt="Printable BagCraft Pattern Page #3" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-04.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-04.png?v=20261103" alt="Printable BagCraft Pattern Page #4" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-05.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-05.png?v=20261103" alt="Printable BagCraft Pattern Page #5" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-06.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-06.png?v=20261103" alt="Printable BagCraft Pattern Page #6" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-07.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-07.png?v=20261103" alt="Printable BagCraft Pattern Page #7" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-01.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-01.png?v=20261103" alt="Printable BagCraft Pattern Page #1" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-02.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-02.png?v=20261103" alt="Printable BagCraft Pattern Page #2" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-03.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-03.png?v=20261103" alt="Printable BagCraft Pattern Page #3" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-04.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-04.png?v=20261103" alt="Printable BagCraft Pattern Page #4" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-05.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-05.png?v=20261103" alt="Printable BagCraft Pattern Page #5" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-06.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-06.png?v=20261103" alt="Printable BagCraft Pattern Page #6" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-07.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-07.png?v=20261103" alt="Printable BagCraft Pattern Page #7" loading="lazy" width="160" height="226"></picture></div></div>
+      <div class="a4-marquee-row to-right"><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-08.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-08.png?v=20261103" alt="Printable BagCraft Pattern Page #8" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-09.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-09.png?v=20261103" alt="Printable BagCraft Pattern Page #9" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-10.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-10.png?v=20261103" alt="Printable BagCraft Pattern Page #10" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-11.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-11.png?v=20261103" alt="Printable BagCraft Pattern Page #11" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-12.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-12.png?v=20261103" alt="Printable BagCraft Pattern Page #12" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-13.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-13.png?v=20261103" alt="Printable BagCraft Pattern Page #13" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-14.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-14.png?v=20261103" alt="Printable BagCraft Pattern Page #14" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-08.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-08.png?v=20261103" alt="Printable BagCraft Pattern Page #8" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-09.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-09.png?v=20261103" alt="Printable BagCraft Pattern Page #9" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-10.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-10.png?v=20261103" alt="Printable BagCraft Pattern Page #10" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-11.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-11.png?v=20261103" alt="Printable BagCraft Pattern Page #11" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-12.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-12.png?v=20261103" alt="Printable BagCraft Pattern Page #12" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-13.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-13.png?v=20261103" alt="Printable BagCraft Pattern Page #13" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-14.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-14.png?v=20261103" alt="Printable BagCraft Pattern Page #14" loading="lazy" width="160" height="226"></picture></div></div>
+      <div class="a4-marquee-row to-left"><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-15.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-15.png?v=20261103" alt="Printable BagCraft Pattern Page #15" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-16.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-16.png?v=20261103" alt="Printable BagCraft Pattern Page #16" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-17.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-17.png?v=20261103" alt="Printable BagCraft Pattern Page #17" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-18.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-18.png?v=20261103" alt="Printable BagCraft Pattern Page #18" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-19.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-19.png?v=20261103" alt="Printable BagCraft Pattern Page #19" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-20.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-20.png?v=20261103" alt="Printable BagCraft Pattern Page #20" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-01.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-01.png?v=20261103" alt="Printable BagCraft Pattern Page #1" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-15.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-15.png?v=20261103" alt="Printable BagCraft Pattern Page #15" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-16.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-16.png?v=20261103" alt="Printable BagCraft Pattern Page #16" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-17.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-17.png?v=20261103" alt="Printable BagCraft Pattern Page #17" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-18.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-18.png?v=20261103" alt="Printable BagCraft Pattern Page #18" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-19.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-19.png?v=20261103" alt="Printable BagCraft Pattern Page #19" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-20.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-20.png?v=20261103" alt="Printable BagCraft Pattern Page #20" loading="lazy" width="160" height="226"></picture></div><div class="a4-sheet-card"><picture><source srcset="assets/sheets/sheet-01.webp?v=20261103" type="image/webp"><img src="assets/sheets/sheet-01.png?v=20261103" alt="Printable BagCraft Pattern Page #1" loading="lazy" width="160" height="226"></picture></div></div>
+    </div>
 
     </div>
   </section>
@@ -3007,24 +2926,24 @@
           <!-- CHAT 1: Linda M. (Ohio) -->
           <div class="wa-phone-card">
             <picture>
-              <source srcset="assets/whatsapp-chat-1.webp" type="image/webp">
-              <img src="assets/whatsapp-chat-1.png" alt="WhatsApp Review from Linda M. in Ohio about Market Tote" width="390" height="780" loading="lazy">
+              <source srcset="assets/whatsapp-proof-1.webp?v=20261103v3" type="image/webp">
+              <img src="assets/whatsapp-proof-1.png?v=20261103v3" alt="WhatsApp Review from Linda M. in Ohio about Market Tote" width="390" height="780" loading="lazy">
             </picture>
           </div>
 
           <!-- CHAT 2: Emily R. (Oregon) -->
           <div class="wa-phone-card">
             <picture>
-              <source srcset="assets/whatsapp-chat-2.webp" type="image/webp">
-              <img src="assets/whatsapp-chat-2.png" alt="WhatsApp Review from Emily R. in Oregon about Etsy backpacks" width="390" height="780" loading="lazy">
+              <source srcset="assets/whatsapp-proof-2.webp?v=20261103v3" type="image/webp">
+              <img src="assets/whatsapp-proof-2.png?v=20261103v3" alt="WhatsApp Review from Emily R. in Oregon about Etsy backpacks" width="390" height="780" loading="lazy">
             </picture>
           </div>
 
           <!-- CHAT 3: Sarah T. (Texas) -->
           <div class="wa-phone-card">
             <picture>
-              <source srcset="assets/whatsapp-chat-3.webp" type="image/webp">
-              <img src="assets/whatsapp-chat-3.png" alt="WhatsApp Review from Sarah T. in Texas about zipper blueprint" width="390" height="780" loading="lazy">
+              <source srcset="assets/whatsapp-proof-3.webp?v=20261103v3" type="image/webp">
+              <img src="assets/whatsapp-proof-3.png?v=20261103v3" alt="WhatsApp Review from Sarah T. in Texas about zipper blueprint" width="390" height="780" loading="lazy">
             </picture>
           </div>
         </div>
@@ -3172,7 +3091,7 @@
           </ul>
 
           <div class="checkout-btn">
-            <a href="https://pay.hotmart.com/B98234821X?off=basic&checkoutMode=10" target="_self" data-utmify-checkout="true" onclick="openUpsellModal(event)" class="btn-cta" style="background: #F3EDE4; border: 1px solid var(--border-subtle); color: var(--forest); max-width: 100%; font-size: 0.95rem; font-weight: 700; box-shadow: none;">
+            <a href="https://pay.hotmart.com/A108319759B?off=zzqf1y8u&checkoutMode=10" target="_self" data-utmify-checkout="true" onclick="openUpsellModal(event)" class="btn-cta" style="background: #F3EDE4; border: 1px solid var(--border-subtle); color: var(--forest); max-width: 100%; font-size: 0.95rem; font-weight: 700; box-shadow: none;">
               GET STARTER PACK FOR $14.90 →
             </a>
           </div>
@@ -3212,7 +3131,7 @@
           </ul>
 
           <div class="checkout-btn">
-            <a href="https://pay.hotmart.com/B98234821X?off=premium&checkoutMode=10" target="_self" data-utmify-checkout="true" class="btn-cta" style="background: linear-gradient(135deg, #16A34A 0%, #15803D 100%); color: #FFF; max-width: 100%; font-size: 1.18rem; font-weight: 900; box-shadow: 0 8px 30px rgba(22, 163, 74, 0.6);">
+            <a href="https://pay.hotmart.com/R108285673S?off=tqffl0l3&checkoutMode=10" target="_self" data-utmify-checkout="true" class="btn-cta" style="background: linear-gradient(135deg, #16A34A 0%, #15803D 100%); color: #FFF; max-width: 100%; font-size: 1.18rem; font-weight: 900; box-shadow: 0 8px 30px rgba(22, 163, 74, 0.6);">
               GET MASTER COLLECTION FOR JUST $27 →
             </a>
           </div>
@@ -3578,11 +3497,11 @@
         </div>
       </div>
 
-      <a href="https://pay.hotmart.com/B98234821X?off=premium&checkoutMode=10" target="_self" data-utmify-checkout="true" class="upsell-btn-accept">
+      <a href="https://pay.hotmart.com/R108285673S?off=tqffl0l3&checkoutMode=10" target="_self" data-utmify-checkout="true" class="upsell-btn-accept">
         YES, UPGRADE TO MASTER COLLECTION ($27) →
       </a>
 
-      <a href="https://pay.hotmart.com/B98234821X?off=basic&checkoutMode=10" target="_self" data-utmify-checkout="true" class="upsell-btn-decline">
+      <a href="https://pay.hotmart.com/A108319759B?off=zzqf1y8u&checkoutMode=10" target="_self" data-utmify-checkout="true" class="upsell-btn-decline">
         No thanks, continue with Starter Pack for $14.90 →
       </a>
     </div>
@@ -3616,6 +3535,62 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeUpsellModal();
     });
+  </script>
+
+
+  <!-- UTM PRESERVATION SCRIPT (P0 PROTOCOL) -->
+  <script>
+    (function() {
+      // Capture all incoming query parameters
+      var urlParams = new URLSearchParams(window.location.search);
+      var paramsToKeep = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'xcod', 'sck', 'src'];
+      var queryData = {};
+
+      paramsToKeep.forEach(function(param) {
+        if (urlParams.has(param)) {
+          queryData[param] = urlParams.get(param);
+        }
+      });
+
+      // Hotmart fallback: If utm_content exists and xcod doesn't, set xcod
+      if (!queryData['xcod'] && queryData['utm_content']) {
+        queryData['xcod'] = queryData['utm_content'];
+      }
+      // If utm_campaign exists and sck doesn't, set sck
+      if (!queryData['sck'] && queryData['utm_campaign']) {
+        queryData['sck'] = queryData['utm_campaign'];
+      }
+
+      function attachUtms(anchor) {
+        try {
+          var href = anchor.getAttribute('href');
+          if (!href || href.indexOf('hotmart.com') === -1) return;
+          var url = new URL(href, window.location.origin);
+          for (var key in queryData) {
+            if (queryData.hasOwnProperty(key) && queryData[key]) {
+              url.searchParams.set(key, queryData[key]);
+            }
+          }
+          anchor.setAttribute('href', url.toString());
+        } catch(e) {
+          console.warn('Error attaching UTMs:', e);
+        }
+      }
+
+      // Run on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        var links = document.querySelectorAll('a[data-utmify-checkout="true"], a[href*="hotmart.com"], .upsell-btn-accept, .upsell-btn-decline');
+        links.forEach(attachUtms);
+      });
+
+      // Run dynamically on click
+      document.addEventListener('click', function(e) {
+        var anchor = e.target.closest('a[data-utmify-checkout="true"], a[href*="hotmart.com"], .upsell-btn-accept, .upsell-btn-decline');
+        if (anchor) {
+          attachUtms(anchor);
+        }
+      }, true);
+    })();
   </script>
 
 </body>
