@@ -3432,46 +3432,6 @@
     if (waPhoneTrackEl) {
       waPhoneTrackEl.addEventListener('scroll', updateWaPhoneCounter, { passive: true });
     }
-
-    // 6. CANONICAL UTM & HOTMART TRACKING PROPAGATION (creador-de-paginas Rule 11)
-    (function() {
-      function getQueryParams() {
-        var params = {};
-        var search = window.location.search.substring(1);
-        if (!search) return params;
-        var pairs = search.split('&');
-        for (var i = 0; i < pairs.length; i++) {
-          var pair = pairs[i].split('=');
-          if (pair[0]) params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
-        }
-        return params;
-      }
-      function propagateTracking() {
-        var params = getQueryParams();
-        var keys = Object.keys(params);
-        if (keys.length === 0) return;
-        var buttons = document.querySelectorAll('a[data-utmify-checkout="true"], a[href*="hotmart.com"]');
-        buttons.forEach(function(btn) {
-          try {
-            var url = new URL(btn.href, window.location.origin);
-            keys.forEach(function(k) { url.searchParams.set(k, params[k]); });
-            if (!url.searchParams.get('xcod') && params['utm_content']) url.searchParams.set('xcod', params['utm_content']);
-            if (!url.searchParams.get('sck') && params['utm_campaign']) url.searchParams.set('sck', params['utm_campaign']);
-            btn.href = url.toString();
-          } catch (e) {}
-        });
-      }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', propagateTracking);
-      } else {
-        propagateTracking();
-      }
-      window.addEventListener('load', propagateTracking);
-      document.addEventListener('click', function(e) {
-        var btn = e.target.closest('a[data-utmify-checkout="true"], a[href*="hotmart.com"]');
-        if (btn) propagateTracking();
-      });
-    })();
   </script>
 
   <!-- MOBILE-FIRST COMPACT UPSELL MODAL -->
@@ -3530,7 +3490,8 @@
       if (e) e.preventDefault();
       const modal = document.getElementById('upsellModal');
       if (modal) {
-        modal.classList.add('active');
+        if (window.injectUTMsGlobal) window.injectUTMsGlobal();
+      modal.classList.add('active');
         document.body.style.overflow = 'hidden';
       }
     }
@@ -3555,90 +3516,68 @@
     });
   </script>
 
-
-  <!-- UTM PRESERVATION & TRACKING SCRIPT (P0 FAIL-SAFE) -->
+  <!-- CANONICAL UTM & TRACKING PERSISTENCE (BauPlan Proven Pattern - Zero sck collision) -->
   <script>
     (function() {
-      var storageKey = 'bagcraft_utm_storage';
-      var paramsToKeep = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'xcod', 'sck', 'src', 'fbclid'];
+      const STORAGE_KEY = 'bagcraft_utm_storage';
+      
+      // 1. Capture and persist parameters
+      function getStoredParams() {
+        try {
+          return JSON.parse(sessionStorage.getItem(STORAGE_KEY) || localStorage.getItem(STORAGE_KEY) || '{}');
+        } catch(e) { return {}; }
+      }
+      
+      function saveParams(paramsObj) {
+        try {
+          sessionStorage.setItem(STORAGE_KEY, JSON.stringify(paramsObj));
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(paramsObj));
+        } catch(e) {}
+      }
 
-      // 1. Capture incoming URL params and persist in storage
-      var urlParams = new URLSearchParams(window.location.search);
-      var queryData = {};
-
-      // Load existing from sessionStorage / localStorage
-      try {
-        var savedSession = JSON.parse(sessionStorage.getItem(storageKey) || '{}');
-        for (var k in savedSession) { queryData[k] = savedSession[k]; }
-      } catch(e) {}
-      try {
-        var savedLocal = JSON.parse(localStorage.getItem(storageKey) || '{}');
-        for (var k in savedLocal) { if (!queryData[k]) queryData[k] = savedLocal[k]; }
-      } catch(e) {}
-
-      // Overwrite with fresh params from URL
-      paramsToKeep.forEach(function(param) {
-        var val = urlParams.get(param);
-        if (val) {
-          queryData[param] = val;
-        }
+      // Collect from current URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const stored = getStoredParams();
+      urlParams.forEach((val, key) => {
+        if (val) stored[key] = val;
       });
 
-      // Hotmart token derivations:
-      // xcod = utm_content (or existing xcod)
-      if (!queryData['xcod'] && queryData['utm_content']) {
-        queryData['xcod'] = queryData['utm_content'];
+      if (Object.keys(stored).length > 0) {
+        saveParams(stored);
       }
-      // sck = utm_source (standard) or utm_campaign
-      if (!queryData['sck']) {
-        if (queryData['utm_source']) {
-          queryData['sck'] = queryData['utm_source'];
-        } else if (queryData['utm_campaign']) {
-          queryData['sck'] = queryData['utm_campaign'];
+
+      // 2. Inject parameters into all checkout URLs
+      function injectUTMs() {
+        window.injectUTMsGlobal = injectUTMs;
+        const currentData = getStoredParams();
+        if (Object.keys(currentData).length === 0) return;
+
+        document.querySelectorAll('a[href*="hotmart.com"], a[data-utmify-checkout="true"]').forEach(link => {
+          try {
+            const url = new URL(link.href, window.location.origin);
+            Object.keys(currentData).forEach(key => {
+              url.searchParams.set(key, currentData[key]);
+            });
+            link.href = url.toString();
+          } catch(e) {}
+        });
+      }
+
+      // Run immediately, on DOM ready, and on window load
+      injectUTMs();
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', injectUTMs);
+      }
+      window.addEventListener('load', injectUTMs);
+
+      // Passive re-check on pointerdown (does not block or capture/prevent clicks)
+      document.addEventListener('pointerdown', function(e) {
+        const link = e.target.closest('a[href*="hotmart.com"], a[data-utmify-checkout="true"]');
+        if (link) {
+          injectUTMs();
         }
-      }
-
-      // Persist back
-      try {
-        sessionStorage.setItem(storageKey, JSON.stringify(queryData));
-        localStorage.setItem(storageKey, JSON.stringify(queryData));
-      } catch(e) {}
-
-      // 2. Attach UTMs to any link
-      function attachUtms(anchor) {
-        try {
-          var href = anchor.getAttribute('href');
-          if (!href || href.indexOf('hotmart.com') === -1) return;
-          var url = new URL(href, window.location.origin);
-          for (var key in queryData) {
-            if (queryData.hasOwnProperty(key) && queryData[key]) {
-              url.searchParams.set(key, queryData[key]);
-            }
-          }
-          anchor.setAttribute('href', url.toString());
-        } catch(e) {
-          console.warn('Error attaching UTMs:', e);
-        }
-      }
-
-      // 3. Decorate all checkout links immediately
-      function decorateAll() {
-        var links = document.querySelectorAll('a[href*="hotmart.com"], a[data-utmify-checkout="true"], .upsell-btn-accept, .upsell-btn-decline');
-        links.forEach(attachUtms);
-      }
-
-      document.addEventListener('DOMContentLoaded', decorateAll);
-      decorateAll();
-
-      // 4. Click interceptor to attach UTMs dynamically
-      document.addEventListener('click', function(e) {
-        var anchor = e.target.closest('a[href*="hotmart.com"], a[data-utmify-checkout="true"], .upsell-btn-accept, .upsell-btn-decline');
-        if (anchor) {
-          attachUtms(anchor);
-        }
-      }, true);
+      }, { passive: true });
     })();
   </script>
-
 </body>
 </html>
