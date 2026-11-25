@@ -3,8 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>BagCraft PRO™ | +200 Canvas & Tote Bag Sewing Patterns (Printable PDF)</title>
+  <link rel="preconnect" href="https://track.bagcraftpatterns.online" crossorigin>
+  <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+  <title>BagCraft PRO™ | +200 Canvas &amp; Tote Bag Sewing Patterns (Printable PDF)</title>
   <meta name="description" content="Sew stunning, boutique-quality canvas bags and totes at home. +200 modern printable PDF patterns with pre-included seam allowances and zero-bulk corner templates.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/hero-mobile-600-v1.webp">
+  <link rel="canonical" href="https://bagcraftpatterns.online/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BagCraft PRO">
+  <meta property="og:title" content="BagCraft PRO™ | +200 Canvas &amp; Tote Bag Sewing Patterns (Printable PDF)">
+  <meta property="og:description" content="Sew stunning, boutique-quality canvas bags and totes at home. +200 printable PDF patterns with seam allowances included, 5 free bonuses &amp; commercial license.">
+  <meta property="og:url" content="https://bagcraftpatterns.online/">
+  <meta property="og:image" content="https://bagcraftpatterns.online/assets/hero-mockup.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="800">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BagCraft PRO™ | +200 Canvas &amp; Tote Bag Sewing Patterns">
+  <meta name="twitter:description" content="Sew boutique-quality canvas bags &amp; totes on your home sewing machine. +200 printable PDF patterns with seam allowances included.">
+  <meta name="twitter:image" content="https://bagcraftpatterns.online/assets/hero-mockup.webp">
 
   <script src="https://track.bagcraftpatterns.online/api/t/tracker.js?tid=1274ff84-a705-4443-a73f-b2858cfae5ec" async></script>
   
@@ -1235,12 +1252,13 @@
     }
 
     .pricing-card:not(.featured) .plan-features li.disabled {
-      color: #A0AEC0;
-      opacity: 0.65;
+      color: #475569;
+      opacity: 1;
     }
 
     .pricing-card:not(.featured) .plan-features li.disabled::before {
-      color: #CBD5E1;
+      color: #DC2626;
+      font-weight: 900;
     }
 
     /* Featured plan: Deep Luxury Forest Green with Gold & Emerald Accents (Hero Card) */
@@ -2449,17 +2467,18 @@
 }
 .wa-phone-track::-webkit-scrollbar { display: none; }
 .wa-phone-track .wa-phone-card {
-  flex: 0 0 80%;
+  flex: 0 0 clamp(250px, 76vw, 300px);
+  width: clamp(250px, 76vw, 300px);
   min-width: 0;
-  max-width: 340px;
+  max-width: 300px;
   margin: 0;
   scroll-snap-align: start;
   transform: none;
-  background: #FFFFFF;
+  background: transparent;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border: none;
 }
 @media (min-width: 769px) {
   .wa-phone-track {
@@ -2468,8 +2487,9 @@
     gap: 20px;
   }
   .wa-phone-track .wa-phone-card {
-    flex: 0 0 300px;
-    max-width: 320px;
+    flex: 0 0 clamp(250px, 24vw, 300px);
+    width: clamp(250px, 24vw, 300px);
+    max-width: 300px;
   }
 }
 .wa-phone-card picture,
@@ -2477,8 +2497,8 @@
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 2 / 3;
-  object-fit: contain;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
 }
 .wa-slide-controls {
   display: flex;
@@ -2544,14 +2564,37 @@
   }
 }
 
-/* Single-card centered pricing grid */
-.pricing-grid.single-offer {
+/* Dual-plan vertical stack: Basic $14.90 ABOVE, Master $27 BELOW (UX-022) */
+.pricing-grid.dual-stack {
   grid-template-columns: 1fr;
-  max-width: 520px;
+  max-width: 540px;
+  gap: 36px;
   margin: 36px auto 0;
 }
-.pricing-grid.single-offer .pricing-card.featured {
+.pricing-grid.dual-stack .pricing-card.featured {
   transform: none;
+}
+.btn-basic-muted {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 24px;
+  border-radius: var(--radius-md);
+  background: #F1F5F9;
+  color: #334155;
+  border: 1.5px solid #CBD5E1;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.btn-basic-muted:hover {
+  background: #E2E8F0;
+  border-color: #94A3B8;
 }
 
 /* Two Paths Section (AFTER #oferta - UX-019) */
@@ -3176,10 +3219,10 @@
 
       <div class="wa-phone-carousel-wrap">
         <div class="wa-phone-track" id="waPhoneTrack" role="region" aria-label="WhatsApp buyer testimonials and finished bag photos" tabindex="0">
-          <div class="wa-phone-card"><img src="assets/wa-buyer-01-v2.webp" alt="Megan Carter WhatsApp message with finished handmade canvas farmer's market tote" width="800" height="1200" loading="lazy" decoding="async"></div>
-          <div class="wa-phone-card"><img src="assets/wa-buyer-02-v2.webp" alt="Ashley Turner WhatsApp message with finished olive green zippered crossbody bag" width="800" height="1200" loading="lazy" decoding="async"></div>
-          <div class="wa-phone-card"><img src="assets/wa-buyer-03-v2.webp" alt="Lauren Brooks WhatsApp message with finished terracotta canvas roll-top backpack" width="800" height="1200" loading="lazy" decoding="async"></div>
-          <div class="wa-phone-card"><img src="assets/wa-buyer-04-v2.webp" alt="Rachel Collins WhatsApp message with finished handmade canvas zippered pouches" width="800" height="1200" loading="lazy" decoding="async"></div>
+          <div class="wa-phone-card"><img src="assets/wa-916-01.webp" alt="Megan Carter WhatsApp message with finished handmade canvas farmer's market tote" width="576" height="1024" loading="lazy" decoding="async"></div>
+          <div class="wa-phone-card"><img src="assets/wa-916-02.webp" alt="Ashley Turner WhatsApp message with finished olive green zippered crossbody bag" width="576" height="1024" loading="lazy" decoding="async"></div>
+          <div class="wa-phone-card"><img src="assets/wa-916-03.webp" alt="Lauren Brooks WhatsApp message with finished terracotta canvas roll-top backpack" width="576" height="1024" loading="lazy" decoding="async"></div>
+          <div class="wa-phone-card"><img src="assets/wa-916-04.webp" alt="Rachel Collins WhatsApp message with finished handmade canvas zippered pouches" width="576" height="1024" loading="lazy" decoding="async"></div>
         </div>
         <div class="wa-slide-controls">
           <button type="button" data-direction="-1" aria-controls="waPhoneTrack" aria-label="Previous testimonial">←</button>
@@ -3292,10 +3335,48 @@
         </p>
       </div>
 
-      <p class="bf-price-note">Today only: Get the complete BagCraft PRO™ Master Collection for <strong>$27 USD</strong> instead of the regular <strong>$108 USD</strong> — <strong>Save $81 Today</strong>.</p>
-      <div class="pricing-grid single-offer">
-        <!-- PLAN PREMIUM (MASTER COLLECTION - $27 USD / ANCHOR $108 USD) -->
-        <div class="pricing-card featured">
+      <p class="bf-price-note">Today only: Get the complete BagCraft PRO™ Master Collection for <strong>$27 USD</strong> instead of the regular <strong><s>$108 USD</s></strong> — <strong>Save $81 Today</strong>.</p>
+      <div class="pricing-grid dual-stack">
+        <!-- PLAN 1 (TOP): BASIC STARTER EDITION ($14.90 USD / COMPARE-AT $59.60 USD) -->
+        <div class="pricing-card" id="plan-basic">
+          <div class="pricing-header">
+            <h3 class="plan-name">Basic Starter Edition</h3>
+            <p class="plan-desc">Essential 50-Pattern Pack • Personal Use Only</p>
+            <div style="margin: 14px auto; max-width: 220px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-subtle);">
+              <picture>
+                <source srcset="assets/mockup-basic-50.webp" type="image/webp">
+                <img src="assets/mockup-basic-50.webp" alt="BagCraft PRO Basic Starter Edition 50 Patterns Single Volume" width="220" height="220" loading="lazy" fetchpriority="low" decoding="async">
+              </picture>
+            </div>
+            <div class="price-box">
+              <span class="price-old"><s>$59.60</s></span>
+              <span class="price-curr">$</span>
+              <span class="price-now">14.90</span>
+            </div>
+            <span class="price-tagline">ONE-TIME PAYMENT • BASIC PACK</span>
+          </div>
+
+          <ul class="plan-features">
+            <li>50 Essential Canvas Tote &amp; Pouch Patterns (PDF)</li>
+            <li>100% Scale Test Square (US Letter &amp; A4)</li>
+            <li>Pre-Included Seam Allowances</li>
+            <li class="disabled">All 200+ Patterns (Missing 150+ Crossbody &amp; Backpack Patterns)</li>
+            <li class="disabled">Bonus #1: Complete Fabric &amp; Yardage Cheat Sheet ($19 Value)</li>
+            <li class="disabled">Bonus #2: Hardware &amp; Straps Sourcing Directory ($17 Value)</li>
+            <li class="disabled">Bonus #3: Handmade Commercial Seller's License ($47 Value)</li>
+            <li class="disabled">Bonus #4: Print-At-Home Scaling &amp; Calibration Guide ($15 Value)</li>
+            <li class="disabled">Bonus #5: Lifetime Access &amp; Future Updates ($29 Value)</li>
+          </ul>
+
+          <div class="checkout-btn">
+            <button type="button" onclick="openUpsellModal(event)" class="btn-basic-muted">
+              Select Basic Starter ($14.90)
+            </button>
+          </div>
+        </div>
+
+        <!-- PLAN 2 (BOTTOM): MASTER COLLECTION ($27 USD / COMPARE-AT $108 USD) -->
+        <div class="pricing-card featured" id="plan-master">
           <div class="pricing-ribbon">⭐ COMPLETE VAULT • SAVE $81 TODAY</div>
           
           <div class="pricing-header">
@@ -3308,7 +3389,7 @@
               </picture>
             </div>
             <div class="price-box">
-              <span class="price-old">$108</span>
+              <span class="price-old"><s>$108 USD</s></span>
               <span class="price-curr">$</span>
               <span class="price-now">27</span>
             </div>
@@ -3317,14 +3398,14 @@
 
           <ul class="plan-features">
             <li><strong>Complete Collection of +200 Patterns (205 Pages Core Deliverable)</strong></li>
-            <li><strong>Volume 1: Modern Totes & Shoppers (70 Patterns)</strong></li>
-            <li><strong>Volume 2: Crossbody & Backpacks (70 Patterns)</strong></li>
-            <li><strong>Volume 3: Pouches & Travel Bags (65 Patterns)</strong></li>
-            <li><strong>The Precision Seam & Zero-Bulk System</strong></li>
+            <li><strong>Volume 1: Modern Totes &amp; Shoppers (70 Patterns)</strong></li>
+            <li><strong>Volume 2: Crossbody &amp; Backpacks (70 Patterns)</strong></li>
+            <li><strong>Volume 3: Pouches &amp; Travel Bags (65 Patterns)</strong></li>
+            <li><strong>The Precision Seam &amp; Zero-Bulk System</strong></li>
             <li><strong>3D Visual Assembly Blueprints for Every Bag</strong></li>
             <li><strong>Handmade Commercial License ($47 Value – FREE)</strong></li>
             <li><strong>All 5 Exclusive Bonuses Included ($127 Value – FREE)</strong></li>
-            <li><strong>Lifetime Vault Access & Free Future Updates</strong></li>
+            <li><strong>Lifetime Vault Access &amp; Free Future Updates</strong></li>
           </ul>
 
           <div class="checkout-btn">
@@ -3340,13 +3421,13 @@
   <!-- ==========================================================================
        SECTION 19: 7-DAY GUARANTEE SECTION
        ========================================================================== -->
-  <section class="guarantee-section">
+  <section class="guarantee-section" id="guarantee">
     <div class="container container-narrow">
       <div class="guarantee-card">
         <div class="guarantee-seal-wrap">
           <picture>
-            <source srcset="assets/guarantee-7-days.webp" type="image/webp">
-            <img src="assets/guarantee-7-days.webp" alt="100% Risk-Free 7-Day Money-Back Guarantee Seal" width="190" height="190" loading="lazy" fetchpriority="low" decoding="async">
+            <source srcset="assets/sello-garantia-7d-bagcraft-v2.webp" type="image/webp">
+            <img src="assets/sello-garantia-7d-bagcraft-v2.webp" alt="100% Risk-Free 7-Day Money-Back Guarantee Seal — BagCraft PRO" width="190" height="190" loading="lazy" fetchpriority="low" decoding="async">
           </picture>
         </div>
         <div class="guarantee-text">
@@ -3647,10 +3728,10 @@
     <div class="upsell-modal-card">
       <button class="upsell-close-btn" onclick="closeUpsellModal()" aria-label="Close modal">&times;</button>
       
-      <span class="upsell-badge-pill">⚡ SPECIAL UPGRADE OPPORTUNITY</span>
-      <h3 class="upsell-modal-title">Upgrade to the Full Master Vault?</h3>
+      <span class="upsell-badge-pill">⚡ ONE-TIME UPGRADE OPPORTUNITY</span>
+      <h3 class="upsell-modal-title">Wait! Unlock the Complete Master Vault?</h3>
       <p class="upsell-modal-subtitle">
-        Get all 200+ patterns, the Commercial License, and all 5 bonuses today for <strong>$27 USD</strong> (Save $81 off the regular $108 price)!
+        For just <strong>$12.10 more ($27 total)</strong>, unlock all <strong>200+ Bag Patterns</strong> + all <strong>5 Free Bonus Guides</strong> + <strong>Commercial License</strong> + <strong>Lifetime Updates</strong>!
       </p>
 
       <div class="upsell-compare-box">
@@ -3664,7 +3745,7 @@
         </div>
         <div class="upsell-compare-row">
           <span class="check-icon">✓</span>
-          <div><strong>All 5 Pro Bonuses ($127 Value):</strong> Fabric guide, hardware blueprint, and cheat sheets.</div>
+          <div><strong>All 5 Free Bonus Guides ($127 Value):</strong> Fabric guide, hardware directory, scaling guide &amp; more.</div>
         </div>
         <div class="upsell-compare-row">
           <span class="check-icon">✓</span>
@@ -3675,21 +3756,21 @@
       <div class="upsell-pricing-highlight">
         <div class="upsell-pricing-label">
           <span>Master Collection Complete Vault</span>
-          <strong>200+ Patterns + All Bonuses</strong>
+          <strong>200+ Patterns + All 5 Bonuses</strong>
         </div>
         <div class="upsell-pricing-calc">
-          <span class="upsell-diff-tag">SAVE $81 TODAY</span>
+          <span class="upsell-diff-tag">ONLY +$12.10 MORE</span>
           <div class="upsell-total-val">$27</div>
         </div>
       </div>
 
       <a href="https://checkout.bagcraftpatterns.online/o/bagcraft-master" target="_self" data-trk-checkout="true" data-checkout="true" class="upsell-btn-accept">
-        YES, GET MASTER COLLECTION FOR $27 →
+        UPGRADE TO MASTER COLLECTION ($27) →
       </a>
 
-      <button type="button" onclick="closeUpsellModal()" class="upsell-btn-decline">
-        Return to page
-      </button>
+      <a href="https://checkout.bagcraftpatterns.online/o/bagcraft-starter" target="_self" data-trk-checkout="true" data-checkout="true" class="upsell-btn-decline">
+        No thanks, I only want the 50-Pattern Basic Pack ($14.90)
+      </a>
     </div>
   </div>
 
