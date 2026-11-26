@@ -2420,7 +2420,60 @@
       color: var(--text-dark) !important;
     }
 
-  </style>
+  
+
+/* CRO Express-Pay & Trust Strip (Inline SVG, Zero Overflow) */
+.express-pay-strip {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  max-width: 100%;
+}
+.express-pay-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.ep-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  padding: 2px 8px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  color: #1A1A1A;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.express-pay-trust {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #4B5563;
+  text-align: center;
+  line-height: 1.35;
+}
+.express-pay-strip--dark .ep-badge {
+  background: #FFFFFF;
+  color: #1A1A1A;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.express-pay-strip--dark .express-pay-trust {
+  color: #D8E2DC;
+}
+.mid-cta-wrap {
+  margin-top: 28px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+</style>
   <!-- deploy-ts: 1793726321 -->
 
   <style>
@@ -2668,13 +2721,13 @@
        ========================================================================== -->
   <div class="top-marquee-bar" aria-label="Special Offers">
     <div class="top-marquee-track">
-      <div class="top-bar-item"><span class="icon">⚡</span> BLACK FRIDAY OFFER: SEASONAL SAVINGS ON BAGCRAFT PRO</div>
+      <div class="top-bar-item"><span class="icon">⚡</span> LIMITED LAUNCH OFFER: SAVE $81 ON BAGCRAFT PRO</div>
       <div class="top-bar-item"><span class="icon">🛡️</span> 100% RISK-FREE 7-DAY MONEY-BACK GUARANTEE</div>
       <div class="top-bar-item"><span class="icon">📁</span> INSTANT DIGITAL DOWNLOAD (LETTER & A4)</div>
       <div class="top-bar-item"><span class="icon">✂️</span> SEAM ALLOWANCES INCLUDED (1/2" & 3/8")</div>
       <div class="top-bar-item"><span class="icon">🏷️</span> COMMERCIAL LICENSE INCLUDED FOR ETSY SELLERS</div>
       <!-- Duplicated for seamless loop -->
-      <div class="top-bar-item"><span class="icon">⚡</span> BLACK FRIDAY OFFER: SEASONAL SAVINGS ON BAGCRAFT PRO</div>
+      <div class="top-bar-item"><span class="icon">⚡</span> LIMITED LAUNCH OFFER: SAVE $81 ON BAGCRAFT PRO</div>
       <div class="top-bar-item"><span class="icon">🛡️</span> 100% RISK-FREE 7-DAY MONEY-BACK GUARANTEE</div>
       <div class="top-bar-item"><span class="icon">📁</span> INSTANT DIGITAL DOWNLOAD (LETTER & A4)</div>
       <div class="top-bar-item"><span class="icon">✂️</span> SEAM ALLOWANCES INCLUDED (1/2" & 3/8")</div>
@@ -2691,7 +2744,7 @@
         <span>✂️</span> 200+ PRINTABLE PDF PATTERNS (205 Pages Core Deliverable)
       </div>
       
-      <span class="bf-badge">Black Friday offer</span>
+      <span class="bf-badge">Limited Launch Offer</span>
       <h1 class="hero-title">
         Sew Stunning, Boutique-Quality Canvas Bags & Totes at Home – <span class="highlight">With Zero-Confusion Patterns</span> and Seam Allowances Included.
       </h1>
@@ -2712,7 +2765,7 @@
 
       <!-- HERO CTA BOX (SIN PRECIO) -->
       <div class="hero-cta-box">
-        <a href="#oferta" class="btn-cta">
+        <a href="#oferta-premium" class="btn-cta">
           GET INSTANT ACCESS TO ALL 200+ PATTERNS →
         </a>
         <div class="hero-subcta">
@@ -2976,6 +3029,9 @@
           <div class="mechanism-visual-caption">Boutique Zipper Finish • Standard Home Machine</div>
         </div>
       </div>
+      <div class="mid-cta-wrap">
+        <a href="#oferta-premium" class="btn-cta">UNLOCK ALL 200+ PATTERNS NOW →</a>
+      </div>
     </div>
   </section>
 
@@ -3207,6 +3263,7 @@
   <!-- ==========================================================================
        SECTION 15: VERIFIED WHATSAPP BUYER TESTIMONIALS
        ========================================================================== -->
+  <div class="container" style="padding:12px 20px 44px;"><div class="mid-cta-wrap"><a href="#oferta-premium" class="btn-cta">CLAIM ALL 5 FREE BONUSES &amp; 200+ PATTERNS →</a></div></div>
   <section class="whatsapp-section" id="whatsapp-reviews">
     <div class="container">
       <div style="text-align: center;">
@@ -3328,7 +3385,7 @@
   <section class="pricing-section" id="oferta">
     <div class="container">
       <div style="text-align: center;">
-        <span class="section-eyebrow">BLACK FRIDAY OFFER</span>
+        <span class="section-eyebrow">LIMITED LAUNCH OFFER</span>
         <h2 class="section-title">Choose Your BagCraft PRO Access</h2>
         <p class="section-desc">
           One-time payment. Instant digital download. Free lifetime updates and 100% risk-free 7-day guarantee.
@@ -3337,46 +3394,8 @@
 
       <p class="bf-price-note">Today only: Get the complete BagCraft PRO™ Master Collection for <strong>$27 USD</strong> instead of the regular <strong><s>$108 USD</s></strong> — <strong>Save $81 Today</strong>.</p>
       <div class="pricing-grid dual-stack">
-        <!-- PLAN 1 (TOP): BASIC STARTER EDITION ($14.90 USD / COMPARE-AT $59.60 USD) -->
-        <div class="pricing-card" id="plan-basic">
-          <div class="pricing-header">
-            <h3 class="plan-name">Basic Starter Edition</h3>
-            <p class="plan-desc">Essential 50-Pattern Pack • Personal Use Only</p>
-            <div style="margin: 14px auto; max-width: 220px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-subtle);">
-              <picture>
-                <source srcset="assets/mockup-basic-50.webp" type="image/webp">
-                <img src="assets/mockup-basic-50.webp" alt="BagCraft PRO Basic Starter Edition 50 Patterns Single Volume" width="220" height="220" loading="lazy" fetchpriority="low" decoding="async">
-              </picture>
-            </div>
-            <div class="price-box">
-              <span class="price-old"><s>$59.60</s></span>
-              <span class="price-curr">$</span>
-              <span class="price-now">14.90</span>
-            </div>
-            <span class="price-tagline">ONE-TIME PAYMENT • BASIC PACK</span>
-          </div>
-
-          <ul class="plan-features">
-            <li>50 Essential Canvas Tote &amp; Pouch Patterns (PDF)</li>
-            <li>100% Scale Test Square (US Letter &amp; A4)</li>
-            <li>Pre-Included Seam Allowances</li>
-            <li class="disabled">All 200+ Patterns (Missing 150+ Crossbody &amp; Backpack Patterns)</li>
-            <li class="disabled">Bonus #1: Complete Fabric &amp; Yardage Cheat Sheet ($19 Value)</li>
-            <li class="disabled">Bonus #2: Hardware &amp; Straps Sourcing Directory ($17 Value)</li>
-            <li class="disabled">Bonus #3: Handmade Commercial Seller's License ($47 Value)</li>
-            <li class="disabled">Bonus #4: Print-At-Home Scaling &amp; Calibration Guide ($15 Value)</li>
-            <li class="disabled">Bonus #5: Lifetime Access &amp; Future Updates ($29 Value)</li>
-          </ul>
-
-          <div class="checkout-btn">
-            <button type="button" onclick="openUpsellModal(event)" class="btn-basic-muted">
-              Select Basic Starter ($14.90)
-            </button>
-          </div>
-        </div>
-
         <!-- PLAN 2 (BOTTOM): MASTER COLLECTION ($27 USD / COMPARE-AT $108 USD) -->
-        <div class="pricing-card featured" id="plan-master">
+        <div class="pricing-card featured" id="oferta-premium" data-plan="premium">
           <div class="pricing-ribbon">⭐ COMPLETE VAULT • SAVE $81 TODAY</div>
           
           <div class="pricing-header">
@@ -3412,6 +3431,53 @@
             <a href="https://checkout.bagcraftpatterns.online/o/bagcraft-master" target="_self" data-trk-checkout="true" data-checkout="true" class="btn-cta" style="background: linear-gradient(135deg, #15803D 0%, #116630 100%); color: #FFFFFF; max-width: 100%; font-size: 1.12rem; font-weight: 900; box-shadow: 0 8px 30px rgba(21, 128, 61, 0.55);">
               GET MASTER COLLECTION FOR $27 →
             </a>
+          </div>
+          <div class="express-pay-strip express-pay-strip--dark" aria-label="Accepted payment methods">
+  <div class="express-pay-badges">
+    <span class="ep-badge" aria-label="Apple Pay"><svg viewBox="0 0 48 20" width="44" height="18" aria-hidden="true"><path fill="currentColor" d="M10.8 5.2c.5-.6.8-1.4.7-2.2-.7 0-1.6.5-2.1 1.1-.4.5-.8 1.3-.7 2.1.8.1 1.6-.4 2.1-1zm.7 1.2c-1.2-.1-2.2.7-2.8.7-.6 0-1.5-.6-2.4-.6-1.2 0-2.4.7-3 1.8-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.2-1.8.7-1 1-2 1-2.1-.1 0-1.9-.7-1.9-2.9 0-1.8 1.5-2.7 1.5-2.7-.8-1.2-2.1-1.4-2.6-1.5z"/><text x="17" y="14.5" font-family="system-ui,-apple-system,sans-serif" font-size="11.5" font-weight="700" fill="currentColor">Pay</text></svg></span>
+    <span class="ep-badge" aria-label="Google Pay"><svg viewBox="0 0 54 20" width="50" height="18" aria-hidden="true"><text x="3" y="14.5" font-family="system-ui,-apple-system,sans-serif" font-size="11.5" font-weight="800" fill="#4285F4">G</text><text x="14" y="14.5" font-family="system-ui,-apple-system,sans-serif" font-size="11.5" font-weight="700" fill="currentColor">Pay</text></svg></span>
+    <span class="ep-badge" aria-label="Visa"><svg viewBox="0 0 44 20" width="40" height="18" aria-hidden="true"><text x="4" y="14.5" font-family="system-ui,-apple-system,sans-serif" font-size="12" font-weight="900" font-style="italic" letter-spacing="0.5" fill="#1A1F71">VISA</text></svg></span>
+    <span class="ep-badge" aria-label="Mastercard"><svg viewBox="0 0 38 20" width="34" height="18" aria-hidden="true"><circle cx="14" cy="10" r="6.5" fill="#EB001B"/><circle cx="23" cy="10" r="6.5" fill="#F79E1B" fill-opacity="0.9"/></svg></span>
+  </div>
+  <div class="express-pay-trust">🔒 Instant Digital Access · 7-Day Guarantee</div>
+</div>
+        </div>
+
+        <!-- PLAN 1 (TOP): BASIC STARTER EDITION ($14.90 USD / COMPARE-AT $59.60 USD) -->
+        <div class="pricing-card" id="plan-basic">
+          <div class="pricing-header">
+            <h3 class="plan-name">Basic Starter Edition</h3>
+            <p class="plan-desc">Essential 50-Pattern Pack • Personal Use Only</p>
+            <div style="margin: 14px auto; max-width: 220px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-subtle);">
+              <picture>
+                <source srcset="assets/mockup-basic-50.webp" type="image/webp">
+                <img src="assets/mockup-basic-50.webp" alt="BagCraft PRO Basic Starter Edition 50 Patterns Single Volume" width="220" height="220" loading="lazy" fetchpriority="low" decoding="async">
+              </picture>
+            </div>
+            <div class="price-box">
+              <span class="price-old"><s>$59.60</s></span>
+              <span class="price-curr">$</span>
+              <span class="price-now">14.90</span>
+            </div>
+            <span class="price-tagline">ONE-TIME PAYMENT • BASIC PACK</span>
+          </div>
+
+          <ul class="plan-features">
+            <li>50 Essential Canvas Tote &amp; Pouch Patterns (PDF)</li>
+            <li>100% Scale Test Square (US Letter &amp; A4)</li>
+            <li>Pre-Included Seam Allowances</li>
+            <li class="disabled">All 200+ Patterns (Missing 150+ Crossbody &amp; Backpack Patterns)</li>
+            <li class="disabled">Bonus #1: Complete Fabric &amp; Yardage Cheat Sheet ($19 Value)</li>
+            <li class="disabled">Bonus #2: Hardware &amp; Straps Sourcing Directory ($17 Value)</li>
+            <li class="disabled">Bonus #3: Handmade Commercial Seller's License ($47 Value)</li>
+            <li class="disabled">Bonus #4: Print-At-Home Scaling &amp; Calibration Guide ($15 Value)</li>
+            <li class="disabled">Bonus #5: Lifetime Access &amp; Future Updates ($29 Value)</li>
+          </ul>
+
+          <div class="checkout-btn">
+            <button type="button" onclick="openUpsellModal(event)" class="btn-basic-muted">
+              Select Basic Starter ($14.90)
+            </button>
           </div>
         </div>
       </div>
@@ -3585,7 +3651,7 @@
     <div class="container">
       <div class="footer-links">
         <a href="#categories">Browse Categories</a>
-        <a href="#oferta">Get Access</a>
+        <a href="#oferta-premium">Get Access</a>
         <a href="#faq">FAQ</a>
         <a href="#privacy-policy">Privacy Policy</a>
         <a href="#purchase-terms">Terms of Service</a>
@@ -3617,10 +3683,10 @@
   <div id="sticky-bottom-bar" class="sticky-bottom-bar" aria-hidden="true">
     <div class="sticky-content">
       <div class="sticky-text">
-        <span class="sticky-title"><span class="badge-dot"></span> Black Friday offer</span>
+        <span class="sticky-title"><span class="badge-dot"></span> Limited Launch Offer</span>
         <span class="sticky-sub">+200 Patterns • Commercial License • 5 Free Bonuses</span>
       </div>
-      <a href="#oferta" class="sticky-btn">Claim 200+ Patterns →</a>
+      <a href="#oferta-premium" class="sticky-btn">Claim 200+ Patterns →</a>
     </div>
   </div>
 
