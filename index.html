@@ -3957,5 +3957,105 @@
   });
 })();
 </script>
+<!-- SMART-CLICK-TO-OFFER-V1 -->
+<script>
+(function () {
+  if (window.__smartClickToOfferInit) return;
+  window.__smartClickToOfferInit = true;
+
+  var EXCLUDE_SELECTOR = [
+    'a', 'button', 'summary', 'details', 'input', 'select', 'textarea', 'label', 'nav', 'footer',
+    '[role="button"]', '[role="link"]', '[role="tab"]', '[role="dialog"]', '[aria-modal="true"]',
+    '[data-trk-checkout]', '[onclick]',
+    '#oferta', '#preise', '#offer', '#oferta-premium', '#faq', '#garantia-faq',
+    '#upsellModal', '#upgradeModal', '#upsell-modal', '#upgrade-modal',
+    '#modalImpressum', '#modalDatenschutz', '#modalAGB',
+    '#live-purchase-toast', '#purchaseToast', '#liveToast', '#live-toast',
+    '[id*="carousel" i]', '[id*="gallery" i]', '[id*="slider" i]', '[id*="marquee" i]',
+    '[class*="carousel" i]', '[class*="slider" i]', '[class*="marquee" i]', '[class*="gallery" i]',
+    '[class*="swipe" i]', '[class*="wa-phone" i]', '[class*="wa-rail" i]', '[class*="wa-slide" i]',
+    '[class*="plate-row" i]', '[class*="strip-controls" i]', '[class*="topbar-track" i]',
+    '[class*="faq" i]', '[class*="accordion" i]', '[class*="modal" i]', '[class*="toast" i]',
+    '[class*="sticky" i]', '.pricing-section', '.section-offer', '.pricing-table'
+  ].join(',');
+
+  var MODAL_IDS = ['upsellModal', 'upgradeModal', 'upsell-modal', 'upgrade-modal', 'modalImpressum', 'modalDatenschutz', 'modalAGB'];
+
+  function hasOpenModal() {
+    for (var i = 0; i < MODAL_IDS.length; i++) {
+      var m = document.getElementById(MODAL_IDS[i]);
+      if (!m) continue;
+      if (m.hasAttribute('hidden') || m.getAttribute('aria-hidden') === 'true') continue;
+      var st = window.getComputedStyle(m);
+      if (st.display !== 'none' && st.visibility !== 'hidden' && parseFloat(st.opacity || '1') > 0) return true;
+    }
+    var dlg = document.querySelector('[role="dialog"]:not([hidden]):not([aria-hidden="true"])');
+    if (dlg) {
+      var dst = window.getComputedStyle(dlg);
+      if (dst.display !== 'none' && dst.visibility !== 'hidden' && parseFloat(dst.opacity || '1') > 0) return true;
+    }
+    return false;
+  }
+
+  function isInHorizontalScroller(el) {
+    var cur = el;
+    for (var depth = 0; cur && cur !== document.body && depth < 6; depth++) {
+      if (cur.scrollWidth > cur.clientWidth + 8) {
+        var ox = window.getComputedStyle(cur).overflowX;
+        if (ox === 'auto' || ox === 'scroll') return true;
+      }
+      cur = cur.parentElement;
+    }
+    return false;
+  }
+
+  var downX = 0, downY = 0, downTime = 0, moved = false, activePointer = false;
+
+  document.addEventListener('pointerdown', function (e) {
+    if (!e.isPrimary) { activePointer = false; return; }
+    if (e.pointerType === 'mouse' && e.button !== 0) { activePointer = false; return; }
+    downX = e.clientX;
+    downY = e.clientY;
+    downTime = Date.now();
+    moved = false;
+    activePointer = true;
+  }, { passive: true });
+
+  document.addEventListener('pointermove', function (e) {
+    if (!activePointer || moved) return;
+    if (Math.hypot(e.clientX - downX, e.clientY - downY) > 8) moved = true;
+  }, { passive: true });
+
+  document.addEventListener('pointercancel', function () {
+    activePointer = false;
+    moved = true;
+  }, { passive: true });
+
+  document.addEventListener('click', function (e) {
+    var wasMoved = moved;
+    var elapsed = downTime ? (Date.now() - downTime) : 0;
+    activePointer = false;
+    moved = false;
+
+    if (e.defaultPrevented || wasMoved) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (downTime && elapsed > 650) return;
+
+    var sel = window.getSelection ? window.getSelection().toString().trim() : '';
+    if (sel.length > 0) return;
+    if (hasOpenModal()) return;
+
+    var el = e.target && e.target.nodeType === 1 ? e.target : (e.target && e.target.parentElement);
+    if (!el || el === document.documentElement) return;
+    if (el.closest(EXCLUDE_SELECTOR)) return;
+    if (isInHorizontalScroller(el)) return;
+
+    var target = document.getElementById('oferta-premium') || document.getElementById('oferta') || document.getElementById('offer') || document.getElementById('preise');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+})();
+</script>
 </body>
 </html>
